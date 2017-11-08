@@ -13,8 +13,24 @@ ODEUM Code Web App Framework. All the basic components to set up the ODEUM Code 
 - Logo
 
 ```js
-import { AppContainer, Header, MenuPanel, Menu, Tab, Workspace, Footer } from 'odeum-app'
-import { Button, ButtonPanel, Modal, Dropdown, Input, Checkbox, ToggleSwitch } from 'odeum-ui'
+import { 	
+	AppContainer, 
+	Header, 
+	MenuPanel, 
+	Menu, 
+	Tab, 
+	Workspace, 
+	Footer } from 'odeum-app'
+
+import { 
+	Button, 
+	ButtonPanel, 
+	Modal, 
+	Dropdown, 
+	Input, 
+	Checkbox, 
+	ToggleSwitch } from 'odeum-ui'
+
 import { Heading, Text } from 'odeum-primitives'
 ```
 
