@@ -1,5 +1,15 @@
-import React from 'react'
-import { render } from 'react-dom'
-import App from './App'
+import Worker from './components/Worker/Worker'
 
-render(<App />, document.getElementById('root'))
+export {
+	Worker,
+}
+
+/* 
+export default {
+	Icon,
+	Button,
+	Modal,
+	ButtonPanel,
+	Worker
+}
+*/

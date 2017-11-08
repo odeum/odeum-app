@@ -1,21 +1,27 @@
-language: node_js
-node_js:
-    - stable
+sudo: false
 
-notifications:
-    email: true
-    slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
+language: node_js
+
+node_js:
+- stable
+
+branches:
+  only:
+  - master
 
 script:
-  - yarn
-  - yarn build
-  - cp ./build/index.html ./build/200.html
-#  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ../../
+- yarn build
 
 deploy:
-  provider: surge
-  project: ./build/
-  domain: yournewapp.surge.sh
   skip_cleanup: true
+  provider: npm
+  email: cb@webhouse.dk
+  api_key: $NPM_TOKEN
   on:
-    all_branches: true
+    repo: odeum/odeum-app
+
+notifications:
+  email: true
+  slack:
+    rooms:
+      secure: GIZlHdjj8/K3YtEz7nATO+5FlKagIT7iyO61MJ7VXcFXD1CYHqboZDEW96OIuyeTmZJfhCYmA4xrYuJGdgtekzL2V/QTjADOxVm3c/a0BZHAZl4z3+H7FTpyj3InAdrFh237/1bts6yoMW2m84lvB93iHFVekx5Z73581H3RGo1F8KSo3YpcRLHGGh35MIPRM8hOXH70KdOdmHN1RIQA7OiQR8U4XZOr24rZ3Fbz7l+QJU5mrbfqxe7EaUNNDCrGOUIKbk25L3ry3ADe0i6Xo5rIyE29vtDDJxaFRblbRAnL9E8/agUzFvMBh4rYzkFBDgSGuY45stRM/JCvJGhPttxx1VdPSgjdQ22mc/N43tG8u8Bcqn7cv/R2ehi5k/awkX2LqOkbGVZb5uoSObs4RU0ax96ilkJNr6y+N7qBCm8eRP+Sv4lrLbHmX6asxS8/N8C4nCYFqBip0iy8BhSKHUgCdbWPvfl1voEhI/1q7j3CmfS7oOL2M9gja0u3kaE/Uxfyjx1GX/IJSNIIM3XqYoDAE8OhWW7opYTlcA5A6O007CgHQ8sW+o/d/CQXWMW8vL5jyhVy4zD2GfufTLBdr9i16MgG38SQr3O50OfgOVpeXKbFKfvrsQ7KngIm2uozntcpNo7nZHqLafplx8pM3mPzaBn6cwBQBtxF+tR5lDo=
