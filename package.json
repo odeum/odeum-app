@@ -20,7 +20,7 @@
 	"scripts": {
 		"build": "babel src --out-dir lib",
 		"clean": "rm -rf lib",
-		"dist": "yarn run clean && yarn run build",
+		"dist": "yarn run clean && yarn run build"
 	},
 	"dependencies": {
 		"polished": "^1.8.0",
