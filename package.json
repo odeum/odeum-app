@@ -1,6 +1,6 @@
 {
 	"name": "odeum-app",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "ODEUM Code Web App Framework.",
 	"main": "lib/index.js",
 	"author": "Christian Broberg",
