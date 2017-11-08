@@ -19,12 +19,12 @@ import { Heading, Text } from 'odeum-primitives'
 ```
 
 ## Added by you:
-- ODEUM UI
-- ODEUM Primitives
-- Redux
-- Routes
+- ODEUM UI (odeum-ui)
+- ODEUM Primitives (odeum-primitives)
+- Styled Components (styled-components)
+- Redux (redux)
 - Code splitting
-- and all the React stuff you love ... 
+- and all the other React stuff you love ... 
 
 
 ### Theme
@@ -40,8 +40,7 @@ import theme from './theme/bluehorizon.js'
 <AppContainer theme={theme}>
 ```
 
-We might provide setTheme and getTheme functions to pattern check the contents of the theme file to ensure that the objects contains the required values. 
-
+On a later stage we might provide setTheme and getTheme functions to pattern check the contents of the theme file to ensure that the objects contains the required values. 
 
 ## Configuration:
 All components exported from **odeum-ui** and **odeum-app** has propTypes and defaultProps. 
@@ -55,9 +54,7 @@ A template with named values and more props passed would look like this:
 ### Logo
 Default logo is odeumcode_logo.svg which is loaded default by Header component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
 
-- JSON config file(s) - footer etc. or style objects.
-
-### Workspace components can be functional components (render props) or class components.
+### Workspace components uses composition to build your app.
 
 ## Routing
 Routing will be encapsulated and processed by the routable components through a route prop. The routable components are:
@@ -72,6 +69,7 @@ Examples:
 <Tab {...props} route={'/dashboard/timeline'} />
 
 ```
+If no route props is provided the Menu or Tab component label will be used for automatically creating a route.
 
 ## 404 - Page Not Found!
 
