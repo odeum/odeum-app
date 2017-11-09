@@ -12,11 +12,8 @@ class Worker extends Component {
 		}
 	}
 	
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.isWorking !== this.props.isWorking) {
-			this.setState({ isWorking: nextProps.isWorking })	
-		}
-		this.setState({ isWorking: nextProps.isWorking })
+	handleClick = () => {
+		this.setState({ isWorking: true })
 	}
 	
 
@@ -24,7 +21,8 @@ class Worker extends Component {
 		const { isWorking } = this.state
 		return (
 			<StyledWorker>
-				It is working ... {isWorking}
+				<p>Is it working? ... {isWorking}</p>
+				<button onClick={this.handleClick}>Make it work</button>
 			</StyledWorker>
 		)
 	}
@@ -39,3 +37,4 @@ Worker.defaultProps = {
 }
 
 export default Worker
+
