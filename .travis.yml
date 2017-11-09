@@ -1,27 +1,21 @@
 sudo: false
-
 language: node_js
-
 node_js:
 - stable
-
 branches:
   only:
   - master
-
 script:
 - yarn build
-
 deploy:
   skip_cleanup: true
   provider: npm
   email: cb@webhouse.dk
-  api_key: $NPM_TOKEN
+  api_key: "$NPM_TOKEN"
   on:
     repo: odeum/odeum-app
-
 notifications:
   email: true
   slack:
     rooms:
-      secure: GIZlHdjj8/K3YtEz7nATO+5FlKagIT7iyO61MJ7VXcFXD1CYHqboZDEW96OIuyeTmZJfhCYmA4xrYuJGdgtekzL2V/QTjADOxVm3c/a0BZHAZl4z3+H7FTpyj3InAdrFh237/1bts6yoMW2m84lvB93iHFVekx5Z73581H3RGo1F8KSo3YpcRLHGGh35MIPRM8hOXH70KdOdmHN1RIQA7OiQR8U4XZOr24rZ3Fbz7l+QJU5mrbfqxe7EaUNNDCrGOUIKbk25L3ry3ADe0i6Xo5rIyE29vtDDJxaFRblbRAnL9E8/agUzFvMBh4rYzkFBDgSGuY45stRM/JCvJGhPttxx1VdPSgjdQ22mc/N43tG8u8Bcqn7cv/R2ehi5k/awkX2LqOkbGVZb5uoSObs4RU0ax96ilkJNr6y+N7qBCm8eRP+Sv4lrLbHmX6asxS8/N8C4nCYFqBip0iy8BhSKHUgCdbWPvfl1voEhI/1q7j3CmfS7oOL2M9gja0u3kaE/Uxfyjx1GX/IJSNIIM3XqYoDAE8OhWW7opYTlcA5A6O007CgHQ8sW+o/d/CQXWMW8vL5jyhVy4zD2GfufTLBdr9i16MgG38SQr3O50OfgOVpeXKbFKfvrsQ7KngIm2uozntcpNo7nZHqLafplx8pM3mPzaBn6cwBQBtxF+tR5lDo=
+      secure: UihRZm6sCrldqQkN9y5e/jdPWQi/igS0A+TcI/YnqXqZZLDXbmMoqF7ux17ILrKcYYFFm7RacSHqz4/sfOvVVD2KRr9RhxNoD10NGy4SVBjxOeoA44bsYl2GuQ56br588+eBklNLm8YBq7F2J7ym/fqFIvXvXbQHru7CqdX8+QWW5esj3OnMJjoa4DHrVT6WJGGe4QiRT2613l+VoefPBsEky4F4vHlrs1D3caQKpRQLsgFqJvdNEpWPX3KnbmczsUf684Go7vTOemFwO+z2ib/IwKvP5MPSFI2B9utXeh2yo0LPMTQempuYJoGqLi702E34ZyqZE9lcLEbpX8Pyjx/97kEeB9wUdlt/h40HSecXR85OP5SbuAFvqyjY9Ls6L/A3/ova9fQlrfE7g5Oe+GPiYuNsi6PXFq9KDm5MMQ7CF+HaybRRAaYJbiMaOVO3aYrLryWdRREwbvsVDQkopuac6qVsIP3kZtydyioJnu64AsC6abnY68toFphuMXgRka0EOFfYYhBo7lkuBMdCNeybPOKpB5ytubbifojLMnwRSkwoR/y/mQTshpH3zIMKDY4gP5/hoa/jzmt0xZsabTcaU+egM/+VoHk5cIAjaIU8hN7N37svky9Xe/eE45M4y/+leXmPjFYdiVnHlSDqu17GTlPd5UtQB7N9Yjii+eU=
