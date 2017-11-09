@@ -1,6 +1,6 @@
 {
 	"name": "odeum-app",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Base module for ODEUM Code Web App Framework.",
 	"main": "lib/index.js",
 	"author": "Christian Broberg",
@@ -9,6 +9,7 @@
 		"odeum",
 		"odeum-code",
 		"odeum-app",
+		"odeum-ui",
 		"framework",
 		"react",
 		"javascript"
@@ -19,6 +20,7 @@
 		"dist": "yarn run clean && yarn run build"
 	},
 	"dependencies": {
+		"odeum-ui": "^0.1.26",
 		"react": "^16.1.0",
 		"react-dom": "^16.1.0",
 		"react-icons": "^2.2.7",
