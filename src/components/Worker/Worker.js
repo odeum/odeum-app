@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { StyledWorker } from './WorkerStyles'
 
 
@@ -17,23 +16,14 @@ class Worker extends Component {
 	}
 	
 
-	render() {
-		const { isWorking } = this.state
+	render() {		
 		return (
-			<StyledWorker>
-				<p>Is it working? ... {isWorking}</p>
+			<StyledWorker>				
+				<p>Is it working? ... {this.state.isWorking}</p>
 				<button onClick={this.handleClick}>Make it work</button>
 			</StyledWorker>
 		)
 	}
-}
-
-Worker.propTypes = {
-	isWorking: PropTypes.bool
-}
-
-Worker.defaultProps = {
-	isWorking: false
 }
 
 export default Worker
