@@ -6,15 +6,11 @@
 	"author": "Christian Broberg",
 	"license": "MIT",
 	"keywords": [
-		"react",
 		"odeum",
 		"odeum-code",
 		"odeum-app",
-		"styled-components",
-		"ui",
-		"ui-primitives",
-		"ui-components",
 		"framework",
+		"react",
 		"javascript"
 	],
 	"scripts": {
