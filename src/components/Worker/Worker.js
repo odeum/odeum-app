@@ -19,7 +19,7 @@ class Worker extends Component {
 	render() {		
 		return (
 			<StyledWorker>				
-				<p>Is it working? ... {this.state.isWorking}</p>
+				<p>Is it working? ...</p>{this.state.isWorking}
 				<button onClick={this.handleClick}>Make it work</button>
 			</StyledWorker>
 		)
