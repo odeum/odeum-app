@@ -1,5 +1,6 @@
-import ODEUM_Logo from 'theme/logo.svg'
-import ODEUM_icon from 'theme/logo_icon.svg'
+import logo from './logo.svg'
+import logo_icon from './logo_icon.svg'
+
 const theme = {
 	header: {
 		background: '#2C3E50',
@@ -36,9 +37,9 @@ const theme = {
 		selected: '#FFF'
 	},
 	 logo: {
-		 default: ODEUM_Logo,
-		 bigLogo: ODEUM_Logo,
-		 smallLogo: ODEUM_icon
+		 default: logo,
+		 bigLogo: logo,
+		 smallLogo: logo_icon
 	 }
 }
 
