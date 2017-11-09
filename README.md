@@ -40,7 +40,7 @@ import { Heading, Text } from 'odeum-primitives'
 - Styled Components (styled-components)
 - Redux (redux)
 - Code splitting
-- and all the other React stuff you love ... 
+- and all the other cool React stuff you love ... 
 
 
 ### Theme
