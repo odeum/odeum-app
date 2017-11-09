@@ -19,9 +19,8 @@
 		"dist": "yarn run clean && yarn run build"
 	},
 	"dependencies": {
-		"polished": "^1.8.0",
-		"react": "^16.0.0",
-		"react-dom": "^16.0.0",
+		"react": "^16.1.0",
+		"react-dom": "^16.1.0",
 		"react-icons": "^2.2.7",
 		"react-modal": "^3.0.0",
 		"styled-components": "^2.1.2"
