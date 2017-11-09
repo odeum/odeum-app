@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TabIconDiv, Link, TabText } from './TabStyles'
 import { Icon } from 'odeum-ui'
-import theme from 'theme/default'
+import theme from '../../theme/default'
 
 class Tab extends Component {
 

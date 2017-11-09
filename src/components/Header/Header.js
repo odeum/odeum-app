@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
-import { ScreenSizes } from 'theme/media'
-import theme from 'theme/default'
+import { ScreenSizes } from '../../theme/media'
+import theme from '../../theme/default'
 export default class Header extends Component {
 
 	constructor(props) {

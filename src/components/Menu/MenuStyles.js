@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from 'theme/default'
+import theme from '../../theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
 
 export const MenuDiv = styled.div`
@@ -35,16 +35,19 @@ export const IconDiv = styled.div`
 export const ArrowIconDiv = IconDiv.extend`
 	align-self: right;
 `
+
 export const MenuText = styled.div`
 	width: 100%;
 `
+
 export const MenuContainer = styled.div`
 	display:flex;
 	flex-flow: row nowrap;
 	flex:1;
 	overflow-y: hidden;
 `
-export const Link = styled(RouterLink) `
+
+export const Link = styled(RouterLink)`
 	border-bottom: ${theme.menu.bottomBorder};
 	text-decoration: none;
 	outline: 0;

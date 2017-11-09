@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { MenuDiv as MenuCont, MenuHeader, IconDiv } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
 
-export default class MenuDiv extends Component {
+class MenuDiv extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -54,3 +54,5 @@ export default class MenuDiv extends Component {
 		)
 	}
 }
+
+export default MenuDiv

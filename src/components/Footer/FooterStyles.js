@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import theme from 'theme/default'
-import media from 'theme/media'
+import theme from '../../theme/default'
+import media from '../../theme/media'
 
 export const Bold = styled.b`
 	font-weight: 600;

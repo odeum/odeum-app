@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from 'theme/default'
+import theme from '../../theme/default'
 import { Link as RouterLink } from 'react-router-dom'
 
 export const TabList = styled.div`

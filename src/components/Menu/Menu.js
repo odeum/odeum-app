@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
-import Workspace from 'components/Workspace/Workspace'
+import Workspace from '../Workspace/Workspace'
 
 class Menu extends Component {
 	//#region Label Converting for Menu
@@ -76,6 +76,5 @@ Menu.propTypes = {
 Menu.defaultProps = {
 	icon: 'menu'
 }
-
 
 export default Menu

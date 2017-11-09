@@ -33,6 +33,7 @@ class MenuPanel extends Component {
 		else if (child.props.children.props.route) { return child.props.children.props.route }
 		else return this.convertChildLabelToRoute(child, false)
 	}
+
 	convertChildLabelToRoute = (child, many) => {
 		var route = ''
 		if (many === true) {
@@ -52,6 +53,7 @@ class MenuPanel extends Component {
 	switch = () => (
 		this.setState({ achordeon: !this.state.achordeon })
 	)
+	
 	setActiveMenu = (route) => {
 		this.setState({ activeMenu: route })
 	}

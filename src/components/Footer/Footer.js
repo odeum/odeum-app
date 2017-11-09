@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyledFooter, Link } from 'components/Footer/FooterStyles'
-import Help from 'components/Help/Help'
-import { ScreenSizes } from 'theme/media'
+import { StyledFooter, Link } from './FooterStyles'
+import Help from '../Help/Help'
+import { ScreenSizes } from '../../theme/media'
 
 class Footer extends Component {
 	constructor(props) {
@@ -40,7 +40,7 @@ class Footer extends Component {
 						&nbsp;| Debug: {this.props.debug}
 					</div>
 				</Link>
-				<Help small={this.state.small} />
+				<Help label={'Need help?'} small={this.state.small} />
 			</StyledFooter>
 		)
 	}

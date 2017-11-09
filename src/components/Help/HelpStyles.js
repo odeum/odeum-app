@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import media from 'theme/media'
-import theme from 'theme/default'
-import { Icon as DefaultIcon } from 'odeum-ui'
+import media from '../../theme/media'
+import theme from '../../theme/default'
+import { Icon } from 'odeum-ui'
 
 export const Bold = styled.b`
 	font-size: 12px;
 	margin-left: 4px;
 `
 
-export const Icon = styled(DefaultIcon)`
+export const HelpIcon = styled(Icon)`
 	&:hover{
 		background: ${theme.tab.hover};
 		color: white;

@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+
 export const ScreenSizes = {
 	giant: 1170,
 	desktop: 992,
