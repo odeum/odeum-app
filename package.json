@@ -1,7 +1,7 @@
 {
 	"name": "odeum-app",
 	"version": "0.1.13",
-	"description": "ODEUM Code Web App Framework.",
+	"description": "Base module for ODEUM Code Web App Framework.",
 	"main": "lib/index.js",
 	"author": "Christian Broberg",
 	"license": "MIT",
