@@ -15,7 +15,7 @@
 		"javascript"
 	],
 	"scripts": {
-		"build": "babel src --out-dir lib",
+		"build": "babel src --out-dir lib && cp ./src/theme/logo_icon.svg ./lib/theme/logo_icon.svg && cp ./src/theme/logo.svg ./lib/theme/logo.svg",
 		"clean": "rm -rf lib",
 		"dist": "yarn run clean && yarn run build"
 	},
