@@ -7,6 +7,8 @@ branches:
   - master
 script:
 - yarn build
+- cp ./src/theme/logo_icon.svg ./lib/theme/logo_icon.svg
+- cp ./src/theme/logo.svg ./lib/theme/logo.svg
 deploy:
   skip_cleanup: true
   provider: npm
