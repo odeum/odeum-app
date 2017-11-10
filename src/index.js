@@ -3,6 +3,8 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Menu from './components/Menu/Menu'
 import MenuPanel from './components/Menu/MenuPanel'
+import Tab from './components/Tabs/Tab'
+import Workspace from './components/Workspace/Workspace'
 
 export {
 	AppContainer,	
