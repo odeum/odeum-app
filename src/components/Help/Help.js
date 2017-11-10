@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { HelpDiv, Bold, Icon, HelpButton } from './HelpStyles'
 
 class Help extends Component {
