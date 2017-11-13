@@ -35,19 +35,16 @@ export const IconDiv = styled.div`
 export const ArrowIconDiv = IconDiv.extend`
 	align-self: right;
 `
-
 export const MenuText = styled.div`
 	width: 100%;
 `
-
 export const MenuContainer = styled.div`
 	display:flex;
 	flex-flow: row nowrap;
 	flex:1;
 	overflow-y: hidden;
 `
-
-export const Link = styled(RouterLink)`
+export const Link = styled(RouterLink) `
 	border-bottom: ${theme.menu.bottomBorder};
 	text-decoration: none;
 	outline: 0;
@@ -58,7 +55,7 @@ export const Link = styled(RouterLink)`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
+	background: ${(props) => props.activemenu === 'true' ? theme.menu.selected : theme.menu.unselected};
 	&:hover{
 		background: ${theme.menu.hover}
 	}

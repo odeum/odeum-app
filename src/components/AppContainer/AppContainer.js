@@ -1,12 +1,15 @@
-import styled from 'styled-components'
-import theme from '../../theme/default'
+import React, { Component } from 'react'
+import { AppDiv } from './AppStyles'
 
-const AppContainer = styled.div`
-	display: flex;
-	flex-flow: column nowrap;
-	height: 100vh;
-	width: 100vw;
-	background-color: ${theme.workspace.background};	
-`
+class AppContainer extends Component {
+
+	render() {
+		return (
+			<AppDiv>
+				{this.props.children}
+			</AppDiv>
+		)
+	}
+}
 
 export default AppContainer

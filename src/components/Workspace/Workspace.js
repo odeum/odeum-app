@@ -3,10 +3,10 @@ import { WorkspaceDiv } from './WorkspaceStyles'
 
 class Workspace extends Component {
 
-	componentWillMount() {
-		if (this.props.helpID)
-		 this.props.SetHelpID(this.props.helpID)
-	}
+	// componentWillMount() {
+	// 	if (this.props.helpID)
+	// 	 this.props.SetHelpID(this.props.helpID)
+	// }
 	
 	render() {
 		return (
