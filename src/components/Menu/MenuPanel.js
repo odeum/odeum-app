@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
@@ -21,6 +21,11 @@ class MenuPanel extends Component {
 		return route
 	}
 	//#endregion
+	componentWillMount = () => {
+		// console.log(window.location.pathname)
+		// this.setActiveMenu(window.location.pathname)
+
+	}
 
 	//#region Tabs Routing + Get First Tab Route 
 	getFirstChildRoute = (child) => {
@@ -33,7 +38,6 @@ class MenuPanel extends Component {
 		else if (child.props.children.props.route) { return child.props.children.props.route }
 		else return this.convertChildLabelToRoute(child, false)
 	}
-
 	convertChildLabelToRoute = (child, many) => {
 		var route = ''
 		if (many === true) {
@@ -53,25 +57,25 @@ class MenuPanel extends Component {
 	switch = () => (
 		this.setState({ achordeon: !this.state.achordeon })
 	)
-	
-	setActiveMenu = (route) => {
-		this.setState({ activeMenu: route })
+	setActiveMenu = (key) => {
+		console.log('aici', key)
+		this.setState({ activeMenu: key })
 	}
 
 	//#endregion
 
 	//#region Rendering
 
-	renderChild = (child) => () => child
+	renderChild = (child) => ({ match }) => { return child }
 	renderMenu = (children) => {
-		console.log(window.location.pathname)
 		return <MenuContainer>
 			<MenuDiv>
 				{children.map((child, index) => {
-					console.log(this.route(child) + this.getFirstChildRoute(child))
 					return (child.props.label ?
 						<MenuItem key={index}
-							active={this.state.activeMenu === (this.route(child) + this.getFirstChildRoute(child)) ? true : false}
+							MenuID={index}
+							helpID={child.props.helpID}
+							active={this.state.activeMenu === (index) ? true : false }
 							icon={child.props.icon}
 							label={child.props.label}
 							route={this.route(child) + this.getFirstChildRoute(child)}
@@ -79,10 +83,11 @@ class MenuPanel extends Component {
 					)
 				})}
 			</MenuDiv>
-			{children.map((child, i) => {
-				return <Route path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} key={i} component={this.renderChild(child)} />
-			})
-			}
+			<Switch>
+				{children.map((child, i) => {
+					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child)} />
+				})}
+			</Switch>
 		</MenuContainer>
 	}
 

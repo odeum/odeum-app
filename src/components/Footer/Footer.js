@@ -37,10 +37,10 @@ class Footer extends Component {
 				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
 					<div style={{ display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center', alignItems: 'center' }}>
 						{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
-						&nbsp;| Debug: {this.props.debug}
+						&nbsp;| Debug: {this.props.helpID}
 					</div>
 				</Link>
-				<Help label={'Need help?'} small={this.state.small} />
+				<Help small={this.state.small} helpID={this.props.helpID}/>
 			</StyledFooter>
 		)
 	}

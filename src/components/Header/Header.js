@@ -4,6 +4,8 @@ import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from '../../theme/media'
 import theme from '../../theme/default'
+
+
 export default class Header extends Component {
 
 	constructor(props) {
@@ -51,7 +53,7 @@ export default class Header extends Component {
 	renderSearchBar = () => {
 		return (<div>Search</div>)
 	}
-	
+
 	render() {
 		const { search, notification, avatar } = this.props
 		const { logo } = this.state
@@ -75,8 +77,9 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-	search: false, 
+	search: false,
 	notification: false,
 	avatar: false
 }
+
 
