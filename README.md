@@ -127,6 +127,7 @@ Routing will be encapsulated and processed by the routable components through a 
 Examples:
 
 ```js
+class Help 
 <Menu {...props} route={'/dashboard'} helpID={'e8ea36f3-db70-44c0-85d6-61507b029373'}>
 <Tab {...props} route={'/dashboard/timeline'} />
 ```
@@ -141,6 +142,8 @@ If no route props is provided the Menu or Tab component label will be used for a
 - New responsive menu
 - Responsive API for component builders
 - Help pop-over menu
+- Login (Logout)
+- Avatar (gravatar integration)
 - Search
 - Notifications
 - Error Boundaries
