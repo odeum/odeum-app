@@ -5,7 +5,7 @@ class Workspace extends Component {
 	
 	componentWillMount() {
 		if (this.props.helpID) {
-			this.props.SetHelpID(this.props.helpID)
+			this.props.setHelpID(this.props.helpID)
 		}
 	}
 
