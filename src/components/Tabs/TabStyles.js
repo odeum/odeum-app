@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from '../../theme/default'
-import { Link as RouterLink } from 'react-router-dom'
+import { NavLink as RouterLink } from 'react-router-dom'
 
 export const TabList = styled.div`
 	flex: 1;

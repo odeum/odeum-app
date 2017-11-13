@@ -21,11 +21,6 @@ class MenuPanel extends Component {
 		return route
 	}
 	//#endregion
-	componentWillMount = () => {
-		// console.log(window.location.pathname)
-		// this.setActiveMenu(window.location.pathname)
-
-	}
 
 	//#region Tabs Routing + Get First Tab Route 
 	getFirstChildRoute = (child) => {
@@ -46,8 +41,6 @@ class MenuPanel extends Component {
 		}
 		else if (child.props.children.props.label)
 			route = '/' + child.props.children.props.label.replace(/\s+/g, '-').toLowerCase()
-		// console.log('---route---')
-		// console.log(route)
 		return route
 	}
 	//#endregion
@@ -58,7 +51,6 @@ class MenuPanel extends Component {
 		this.setState({ achordeon: !this.state.achordeon })
 	)
 	setActiveMenu = (key) => {
-		console.log('aici', key)
 		this.setState({ activeMenu: key })
 	}
 
