@@ -8,7 +8,7 @@ class MenuItem extends Component {
 	// 	icon: 'menu'
 	// }
 	cutRoutes = (string) => {
-		var match = string.match(/\/\S*(\/|$)/i)
+		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)
 		return match ? match[0] : null
 	}
 	componentWillMount() {
