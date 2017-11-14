@@ -11,7 +11,7 @@ class MenuPanel extends Component {
 		this.state = {
 			achordeon: true,
 			disableMenuAchordeon: false,
-			activeMenu: '/'
+			activeMenu: 0
 		}
 	}
 	//#region Label Converting for Menu

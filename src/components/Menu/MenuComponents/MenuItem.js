@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import { Icon } from 'odeum-ui'
 
 class MenuItem extends Component {
-	static defaultProps = {
-		icon: 'menu'
-	}
+	// static defaultProps = {
+	// 	icon: 'menu'
+	// }
 	cutRoutes = (string) => {
-		var match = string.match(/\/\S*\//i)
+		var match = string.match(/\/\S*(\/|$)/i)
 		return match ? match[0] : null
 	}
 	componentWillMount() {
