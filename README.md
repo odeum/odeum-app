@@ -139,13 +139,14 @@ If no route props is provided the Menu or Tab component label will be used for a
 - Refactoring styles, naming, structure - emphasize code style
 - Documentation (up until now and continously)
 - 404 - page not found component
-- Dynamic tabs
 - New responsive menu
 - Responsive API for component builders
+- Redux for dispatching setHelpID and retrieving getHelpID from state
 - Help pop-over menu
+- Dynamic tabs
 - Login (Logout)
 - Avatar (gravatar integration)
 - Search
 - Notifications
 - Error Boundaries
-- How to - manual - README
+- How to - manual - README (www.odeumcode.com)
