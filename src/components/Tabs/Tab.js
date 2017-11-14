@@ -5,14 +5,14 @@ import { Icon } from 'odeum-ui'
 import theme from '../../theme/default'
 
 
-class Tab extends Component {
-	
+class Tab extends Component {	
 	
 		componentWillMount() {
 			if (this.props.helpID && this.props.active) {
-				this.props.SetHelpID(this.props.helpID)
+				this.props.setHelpID(this.props.helpID)
 			}
 		}
+
 		iconIsActive = () => this.props.active ? theme.icon.selected : theme.icon.default
 	
 		render() {
