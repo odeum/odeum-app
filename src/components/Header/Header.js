@@ -8,14 +8,6 @@ import theme from '../../theme/default'
 
 export default class Header extends Component {
 	
-		constructor(props) {
-			super(props)
-			this.state = {
-				// logo: this.props.logo ? this.props.logo.default : this.props.logos ? this.props.logos[0] : theme.logo.default,
-				// logos: theme.logo.bigLogo && theme.logo.smallLogo ? [theme.logo.bigLogo, theme.logo.smallLogo] : undefined
-			}
-		}
-	
 		changeLogo = (logo) => {
 			this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? logo.default : logo.smallLogo })
 		}
@@ -50,7 +42,7 @@ export default class Header extends Component {
 			// console.log('renderLogo', logo)
 			return (
 				<LogoDiv to={'/'}>
-					<LogoImg src={logo} />
+					<LogoImg src={logo ? logo : logo !== false ? theme.logo : null} />
 				</LogoDiv>)
 		}
 	
@@ -61,7 +53,7 @@ export default class Header extends Component {
 		render() {
 			// console.log(this.props.logo)
 			const { search, notification, avatar } = this.props
-			const { logo } = this.state
+			const { logo } = this.props
 			const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 			return (
 				<HeaderDiv>
