@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from '../../theme/media'
 // import theme from '../../theme/default'
-import { Icon } from 'odeum-ui'
+import { Icon as DefaultIcon} from 'odeum-ui'
 
 export const Bold = styled.b`
 	font-size: 12px;
