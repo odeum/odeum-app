@@ -69,7 +69,7 @@ import { Heading, Text } from 'odeum-primitives'
 ```
 
 ## 3.1. Additional ODEUM Code packages
-- ODEUM UI (odeum-app)
+- ODEUM UI (odeum-ui)
 - ODEUM Primitives (odeum-primitives)
 
 ## 3.2. Support packages for your styling and data management
@@ -81,14 +81,30 @@ import { Heading, Text } from 'odeum-primitives'
 # How to use odeum-app
 
 ### 3.2.1. Theme
-Default theme is ODEUM Code theme. The theme file contains objects for colors, fonts and sizes for the selected theme.
+The default provided theme is the ODEUM Code theme. This theme is automatically loaded if no **custom theme** is provided through the **AppContainer** component. 
 
-A theme is passed as a theme prop to the <AppContainer> component. 
+The theme file contains objects for colors, fonts and sizes for the selected theme. 
 
-If no theme is provided to the AppContainer by the user, the AppContainer loads the default theme provided in the odeum-app package.
+The theme file exports a completely standard JavaScript object:
 
 ```js
-import theme from './theme/bluehorizon.js'
+const blueHorizonTheme = {
+	header: {
+		background: '#2C3E50',
+		color: '#FFF'
+	}, ... 
+}
+	...
+
+export default blueHorizonTheme
+```
+
+The custom theme is passed as a theme prop to the <AppContainer> component. 
+
+To provide a custom theme create a theme JavaScript file and import it in your app. 
+
+```js
+import blueHorizonTheme from './theme/bluehorizon.js'
 ...
 <AppContainer theme={theme}>
 ```
@@ -96,7 +112,7 @@ import theme from './theme/bluehorizon.js'
 On a later stage we might provide setTheme and getTheme functions to pattern check the contents of the theme file to ensure that the objects contains the required values. 
 
 ## 3.3. Configuration:
-All components exported from **odeum-app** and **odeum-app** has propTypes and defaultProps. 
+All components exported from **odeum-app** has propTypes and defaultProps. 
 
 All defaultProps are loaded with default values so a fully scaled down App template will look like this:
 [App_default.js](./src/App_default.js)
