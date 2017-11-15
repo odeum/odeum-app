@@ -3,7 +3,7 @@ import theme from '../../theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
 
 export const MenuDiv = styled.div`
-	background-color: ${theme.menu.background};
+	background-color: ${props => props.theme.menu.background};
 	display: flex;
 	flex: 1 0 auto;
 	flex-flow: column nowrap;
@@ -13,7 +13,7 @@ export const MenuDiv = styled.div`
 `
 
 const BaseItem = styled.div`
-	border-bottom: ${theme.menu.bottomBorder};
+	border-bottom: ${props => props.theme.menu.bottomBorder};
 	height: 50px;
 	width: 100%;
 	display: flex;
@@ -45,7 +45,7 @@ export const MenuContainer = styled.div`
 	overflow-y: hidden;
 `
 export const Link = styled(RouterLink) `
-	border-bottom: ${theme.menu.bottomBorder};
+	border-bottom: ${props => props.theme.menu.bottomBorder};
 	text-decoration: none;
 	outline: 0;
 	color: white;
@@ -55,12 +55,12 @@ export const Link = styled(RouterLink) `
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background: ${(props) => props.activemenu === 'true' ? theme.menu.selected : theme.menu.unselected};
+	background: ${(props) => props.activemenu === 'true' ? props.theme.menu.selected : props.theme.menu.unselected};
 	&:hover{
-		background: ${theme.menu.hover}
+		background: ${props => props.theme.menu.hover}
 	}
 	&.active{
-		background: ${theme.menu.selected}
+		background: ${props => props.theme.menu.selected}
 	}
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;

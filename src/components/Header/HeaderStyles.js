@@ -1,7 +1,7 @@
 
 // these sizes are arbitrary and you can set them to whatever you wish
 import styled from 'styled-components'
-import theme from '../../theme/default'
+// import theme from '../../theme/default'
 import media from '../../theme/media'
 import { Link as RouterLink } from 'react-router-dom'
 
@@ -13,8 +13,8 @@ export const HeaderDiv = styled.div`
 	height: 80px;
 	align-items: center;
 	justify-content: space-between;
-	background-color: ${theme.header.background};
-	color: ${theme.header.color};
+	background-color: ${props => props.theme.header.background};
+	color: ${props => props.theme.header.color};
 	${media.giant`height:80px;`}
 	${media.desktop`height:80px;`}
 	${media.tablet`height:50px;`}

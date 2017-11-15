@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '../../theme/default'
+// import theme from '../../theme/default'
 import media from '../../theme/media'
 
 export const Bold = styled.b`
@@ -12,8 +12,8 @@ export const StyledFooter = styled.div`
 	justify-content: center;
 	width: 100vw;
 	height: 40px;
-	background: ${theme.footer.background};
-	color: ${theme.footer.color};
+	background: ${props => props.theme.footer.background};
+	color: ${props => props.theme.footer.color};
 	-webkit-box-shadow: 0 0 3px 0 #ccc;
 	-moz-box-shadow: 0 0 3px 0 #ccc;
 	box-shadow: 0 0 3px 0 #ccc;
