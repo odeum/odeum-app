@@ -114,14 +114,8 @@ On a later stage we might provide setTheme and getTheme functions to pattern che
 ## 3.3. Configuration:
 All components exported from **odeum-app** has propTypes and defaultProps. 
 
-All defaultProps are loaded with default values so a fully scaled down App template will look like this:
-[App_default.js](./src/App_default.js)
-
-A template with named values and more props passed would look like this:
-[App_normal.js](./src/App_normal.js)
-
 ### 3.3.1. Logo
-Default logo is odeumcode_logo.svg which is loaded default by Header component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
+Default logo is the ODEUM Code logo loaded through the default theme by the <Header /> component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
 
 ### 3.3.2. Help
 Help ID is initially propagated through props on Menu and Tab components through a helpID prop. 
@@ -132,7 +126,6 @@ Help ID is initially propagated through props on Menu and Tab components through
 	</Tab>
 </Menu>
 ```
-
 
 ## 3.4. Routing
 Routing will be encapsulated and processed by the routable components through a route prop. The routable components are:
