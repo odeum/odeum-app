@@ -20,7 +20,7 @@
 		"dist": "yarn run clean && yarn run build"
 	},
 	"dependencies": {
-		"odeum-ui": "^0.1.26",
+		"odeum-ui": "^0.1.27",
 		"react": "^16.1.0",
 		"react-dom": "^16.1.0",
 		"react-router-dom": "^4.2.2",
