@@ -6,7 +6,7 @@ import { MenuContainer } from './MenuStyles'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute } from '../utils/Functions'
 import {ScreenSizes as sizes } from '../../theme/media'
-
+import NotFound from '../AppContainer/NotFound'
 class MenuPanel extends Component {
 	constructor(props) {
 		super(props)
