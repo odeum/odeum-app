@@ -1,6 +1,6 @@
 {
 	"name": "odeum-app",
-	"version": "0.2.25",
+	"version": "0.2.27",
 	"description": "ODEUM Code Web App foundation modules",
 	"main": "lib/index.js",
 	"author": "Christian Broberg",
@@ -20,20 +20,28 @@
 		"dist": "yarn run clean && yarn run build"
 	},
 	"dependencies": {
-		"odeum-ui": "^0.1.26",
+		"odeum-ui": "^0.1.28",
 		"react": "^16.1.0",
 		"react-dom": "^16.1.0",
 		"react-icons": "^2.2.7",
 		"react-modal": "^3.0.0",
+		"react-router-dom": "^4.2.2",
 		"styled-components": "^2.1.2"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
-		"babel-eslint": "^8.0.1",
+		"babel-eslint": "^7.2.3",
+		"babel-plugin-transform-react-remove-prop-types": "^0.4.10",
 		"babel-preset-env": "^1.6.0",
 		"babel-preset-es2015": "^6.24.1",
 		"babel-preset-react": "^6.24.1",
-		"babel-preset-stage-2": "^6.24.1"
+		"babel-preset-stage-2": "^6.24.1",
+		"eslint": "^4.11.0",
+		"eslint-config-react-app": "^2.0.1",
+		"eslint-plugin-flowtype": "^2.39.1",
+		"eslint-plugin-import": "^2.8.0",
+		"eslint-plugin-jsx-a11y": "^5.1.1",
+		"eslint-plugin-react": "^7.5.1"
 	},
 	"babel": {
 		"presets": [
