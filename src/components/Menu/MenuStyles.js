@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import theme from '../../theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
 
 export const MenuDiv = styled.div`
@@ -40,7 +39,7 @@ export const MenuText = styled.div`
 `
 export const MenuContainer = styled.div`
 	display:flex;
-	flex-flow: row nowrap;
+	flex-flow: ${props => props.quicknav ? 'column nowrap'  : 'row nowrap' };
 	flex:1;
 	overflow-y: hidden;
 `
@@ -48,7 +47,7 @@ export const Link = styled(RouterLink) `
 	border-bottom: ${props => props.theme.menu.bottomBorder};
 	text-decoration: none;
 	outline: 0;
-	color: white;
+	color: ${props => props.theme.menu.color};
 	width: 250px;
 	height: 50px;
 	font-weight: 300;

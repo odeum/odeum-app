@@ -4,19 +4,25 @@ import { Route, Switch } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from '../Workspace/Workspace'
-
+import { convertLabelToRoute } from '../utils/Functions'
 class Menu extends Component {
 
-	//#region Label Converting for Menu
-	route = (child) => this.props.route ? this.props.route : this.convertLabelToRoute(this.props.label)
-	convertLabelToRoute = (label) => {
-		let route = label.replace(/\s+/g, '-').toLowerCase()
-		route = '/' + route
-		return route
+	componentWillMount = () => {
+		// console.log('-------')
+		// console.log('this.props.activeMenu', this.props.activeMenu)
+		// console.log('this.props.route', this.props.route)
+		// console.log('this.props.index', this.props.index)
+		// console.log('-----')
+		if (window.location.pathname.includes(this.props.route) && this.props.activeMenu !== this.props.index) {
+			this.props.setActiveMenu(this.props.index)
+		}
 	}
 
+	//#region Label Converting for Menu
+	route = (child) => this.props.route ? this.props.route : convertLabelToRoute(this.props.label)
+
 	childRoute = (child) => {
-		return child.props.route ? child.props.route : this.convertLabelToRoute(child.props.label)
+		return child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
 	}
 
 	//#endregion
@@ -27,7 +33,7 @@ class Menu extends Component {
 		return <Route key={index} path={this.route() + this.childRoute(child)} component={this.renderChild(child)} />
 	})
 
-	renderChild = (child) => () => <Workspace>{child.props.children}</Workspace>
+	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
 
 	//#endregion
 
@@ -35,7 +41,7 @@ class Menu extends Component {
 		if (children[0].type === Tab)
 			return (
 				<SceneDiv>
-					<TabList>
+					{!this.props.quicknav ? <TabList>
 						{children.map((child, index) => (
 							<Tab key={index}
 								helpID={child.props.helpID}
@@ -44,7 +50,7 @@ class Menu extends Component {
 								icon={child.props.icon}
 								route={this.route() + this.childRoute(child)} />
 						))}
-					</TabList>
+					</TabList> : null}
 					<Switch>
 						{this.renderChildren(children)}
 					</Switch>
@@ -60,16 +66,14 @@ class Menu extends Component {
 
 	renderNoTabs = (children) => {
 		return (
-			<Workspace>
+			<Workspace helpID={this.props.helpID ? this.props.helpID : null}>
 				{children}
 			</Workspace>
 		)
 	}
 
 	render() {
-		const Children = []
-		Array.isArray(this.props.children) ? Children.push(...this.props.children) : Children.push(this.props.children)
-		return this.renderTabs(Children)
+		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }
 

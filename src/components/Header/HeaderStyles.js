@@ -22,7 +22,7 @@ export const HeaderDiv = styled.div`
 `
 
 export const LogoDiv = styled(RouterLink)`
-	height: 100%;
+	height: 50%;
 	max-height: 35px;
 	align-self: center;
 	padding: 5px;

@@ -1,5 +1,4 @@
 import logo from './logo.svg'
-import logo_icon from './logo_icon.svg'
 
 const theme = {
 	header: {
@@ -35,12 +34,16 @@ const theme = {
 	icon: {
 		default: '#34495D',
 		selected: '#FFF'
+	}, 
+	quicknav: {
+		button: {
+			background: '#3B97D3',
+			color: '#FFF'
+		}
 	},
-	 logo: {
-		 default: logo,
-		 bigLogo: logo,
-		 smallLogo: logo_icon
-	 }
+	logo: {
+		default: logo
+	}
 }
 
 export default theme

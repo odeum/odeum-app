@@ -6,33 +6,8 @@ class MenuDiv extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			achordeon: true,
-			disableAchordeon: false
+			achordeon: true
 		}
-	}
-	sizes = {
-		giant: 1170,
-		desktop: 992,
-		tablet: 768,
-		phone: 376
-	}
-
-	componentDidMount() {
-		this.updateWindowDimensions()
-		window.addEventListener('resize', this.updateWindowDimensions)
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.updateWindowDimensions)
-	}
-
-	updateWindowDimensions = () => {
-		if (window.innerWidth < this.sizes.tablet && !this.state.disableAchordeon) {
-			this.setState({ achordeon: false, disableMenuAchordeon: true })
-		}
-		else if (window.innerWidth >= this.sizes.tablet && this.state.disableMenuAchordeon) {
-			this.setState({ disableAchordeon: false })
-		} 
 	}
 
 	switch = () => (
@@ -40,19 +15,19 @@ class MenuDiv extends Component {
 	)
 	
 	render() {
-		const { disableAchordeon } = this.state
 		return (
-			<MenuCont achordeon={this.state.achordeon}>
+			 <MenuCont achordeon={this.state.achordeon}>
 				<MenuHeader>
-					<IconDiv onClick={!disableAchordeon ? this.switch : null}
+					<IconDiv onClick={ this.switch }
 						style={{ cursor: 'pointer' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
 					</IconDiv>
 				</MenuHeader>
 				{this.props.children}
-			</MenuCont>
+			</MenuCont> 
 		)
 	}
 }
+
 
 export default MenuDiv

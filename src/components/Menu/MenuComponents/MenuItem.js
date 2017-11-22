@@ -5,29 +5,21 @@ import { Icon } from 'odeum-ui'
 
 
 class MenuItem extends Component {
-	static defaultProps = {
-		icon: 'menu'
-	}
+
 	cutRoutes = (string) => {
 		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)
-		console.log(string, match)
 		return match ? match[0] : null
 	}
 	componentWillMount() {
-		// console.log(this.props.route)
 		if (this.props.helpID && this.props.active)
 			this.props.SetHelpID(this.props.helpID)
 		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route))
 			this.activate()
 	}
 	activate = () => {
-		// console.log('bing')
 		this.props.onClick(this.props.MenuID ? this.props.MenuID : 0)
 	}
 	render() {
-
-		//console.log(this.props.label, this.props.route)
-
 		return (
 			<Link title={this.props.label} to={this.props.route} achordeon={this.props.achordeon} onClick={this.activate} activemenu={this.props.active.toString()}>
 				<IconDiv><Icon color={'white'} iconSize={18} icon={this.props.icon ? this.props.icon : this.defaultProps.icon} style={{ marginRight: '0px' }} /></IconDiv>

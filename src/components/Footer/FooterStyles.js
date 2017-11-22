@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 // import theme from '../../theme/default'
 import media from '../../theme/media'
-
 export const Bold = styled.b`
-	font-weight: 600;
+font-weight: 600;
 `
 export const StyledFooter = styled.div`
 	display: flex;
@@ -11,7 +10,7 @@ export const StyledFooter = styled.div`
 	align-items: center;
 	justify-content: center;
 	width: 100vw;
-	height: 40px;
+	height:40px;
 	background: ${props => props.theme.footer.background};
 	color: ${props => props.theme.footer.color};
 	-webkit-box-shadow: 0 0 3px 0 #ccc;
@@ -24,8 +23,8 @@ export const StyledFooter = styled.div`
 	user-select: none;
 	${media.giant`height:40px;`}
 	${media.desktop`height:40px;`}
-	${media.tablet`height:30px;`}
-	${media.phone`height:20px;`}
+	${media.tablet`height:0px;`}
+	${media.phone`height:0px;`}
 `
 
 export const Link = styled.a`
@@ -34,3 +33,4 @@ export const Link = styled.a`
 	justify-content: center;
 	color: black;
 `
+
