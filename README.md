@@ -69,7 +69,7 @@ import { Heading, Text } from 'odeum-primitives'
 ```
 
 ## 3.1. Additional ODEUM Code packages
-- ODEUM UI (odeum-ui)
+- ODEUM UI (odeum-app)
 - ODEUM Primitives (odeum-primitives)
 
 ## 3.2. Support packages for your styling and data management
@@ -81,30 +81,14 @@ import { Heading, Text } from 'odeum-primitives'
 # How to use odeum-app
 
 ### 3.2.1. Theme
-The default provided theme is the ODEUM Code theme. This theme is automatically loaded if no **custom theme** is provided through the **AppContainer** component. 
+Default theme is ODEUM Code theme. The theme file contains objects for colors, fonts and sizes for the selected theme.
 
-The theme file contains objects for colors, fonts and sizes for the selected theme. 
+A theme is passed as a theme prop to the <AppContainer> component. 
 
-The theme file exports a completely standard JavaScript object:
-
-```js
-const blueHorizonTheme = {
-	header: {
-		background: '#2C3E50',
-		color: '#FFF'
-	}, ... 
-}
-	...
-
-export default blueHorizonTheme
-```
-
-The custom theme is passed as a theme prop to the <AppContainer> component. 
-
-To provide a custom theme create a theme JavaScript file and import it in your app. 
+If no theme is provided to the AppContainer by the user, the AppContainer loads the default theme provided in the odeum-app package.
 
 ```js
-import blueHorizonTheme from './theme/bluehorizon.js'
+import theme from './theme/bluehorizon.js'
 ...
 <AppContainer theme={theme}>
 ```
@@ -112,10 +96,16 @@ import blueHorizonTheme from './theme/bluehorizon.js'
 On a later stage we might provide setTheme and getTheme functions to pattern check the contents of the theme file to ensure that the objects contains the required values. 
 
 ## 3.3. Configuration:
-All components exported from **odeum-app** has propTypes and defaultProps. 
+All components exported from **odeum-app** and **odeum-app** has propTypes and defaultProps. 
+
+All defaultProps are loaded with default values so a fully scaled down App template will look like this:
+[App_default.js](./src/App_default.js)
+
+A template with named values and more props passed would look like this:
+[App_normal.js](./src/App_normal.js)
 
 ### 3.3.1. Logo
-Default logo is the ODEUM Code logo loaded through the default theme by the <Header /> component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
+Default logo is odeumcode_logo.svg which is loaded default by Header component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
 
 ### 3.3.2. Help
 Help ID is initially propagated through props on Menu and Tab components through a helpID prop. 
@@ -127,6 +117,7 @@ Help ID is initially propagated through props on Menu and Tab components through
 </Menu>
 ```
 
+
 ## 3.4. Routing
 Routing will be encapsulated and processed by the routable components through a route prop. The routable components are:
 - AppContainer (makes the logo ('/') routable)
@@ -136,26 +127,43 @@ Routing will be encapsulated and processed by the routable components through a 
 Examples:
 
 ```js
-class Help 
 <Menu {...props} route={'/dashboard'} helpID={'e8ea36f3-db70-44c0-85d6-61507b029373'}>
 <Tab {...props} route={'/dashboard/timeline'} />
 ```
 
 If no route props is provided the Menu or Tab component label will be used for automatically creating a route.
 
+## Quick Navigation
+
+To pass styles to the responsive Quick Navigation button use the following in MenuPanel directly:
+
+```js
+<MenuPanel quicknav={{ label: 'Quick Navigation', icon: 'menu', ... }}>
+```
+Or pass a style object:
+
+```js
+const quicknavStyles = {
+	label: 'Quick Navigation', 
+	icon: 'menu',
+	...
+}
+...
+<MenuPanel quicknav={quicknavStyles}>
+
+```
+
+
 ## 3.5. TODO:
-- Custom themes available for integration through AppContainer + (test with custom theme)
+- [v] Custom themes available for integration through AppContainer + (test with custom theme)
 - Refactoring styles, naming, structure - emphasize code style
+- Quick Navigation style object prop
 - Documentation (up until now and continously)
 - 404 - page not found component
 - New responsive menu
 - Responsive API for component builders
-- Redux for dispatching setHelpID and retrieving getHelpID from state
 - Help pop-over menu
-- Dynamic tabs
-- Login (Logout)
-- Avatar (gravatar integration)
 - Search
 - Notifications
 - Error Boundaries
-- How to - manual - README (www.odeumcode.com)
+- How to - manual - README
