@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import { WorkspaceDiv } from './WorkspaceStyles'
 
 class Workspace extends Component {
-	
+
 	componentWillMount() {
-		if (this.props.helpID) {
-			this.props.setHelpID(this.props.helpID)
-		}
+		if (this.props.helpID)
+			this.props.SetHelpID(this.props.helpID)
 	}
 
 	render() {
+		const { noTab } = this.props
 		return (
-			<WorkspaceDiv style={this.props.style}>
+			<WorkspaceDiv style={this.props.style} noTab={noTab}>
 				{this.props.children}
 			</WorkspaceDiv>
 		)
@@ -19,3 +19,4 @@ class Workspace extends Component {
 }
 
 export default Workspace
+

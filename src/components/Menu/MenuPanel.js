@@ -7,6 +7,7 @@ import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute } from '../utils/Functions'
 import {ScreenSizes as sizes } from '../../theme/media'
 import NotFound from '../AppContainer/NotFound'
+import Tab from '../Tabs/Tab'
 class MenuPanel extends Component {
 	constructor(props) {
 		super(props)
@@ -49,12 +50,16 @@ class MenuPanel extends Component {
 
 	getFirstChildRoute = (child) => {
 		var children = React.Children.toArray(child.props.children)
-		if (children[0].props.route)
-			return children[0].props.route
-		else
-		if (children[0].props.label)
-			return convertLabelToRoute(children[0].props.label)
-		else
+		if (children[0].type === Tab) {
+			if (children[0].props.route !== undefined)
+				return children[0].props.route
+			else {
+				if (children[0].props.label)
+					return convertLabelToRoute(children[0].props.label)
+				else
+					return ''
+			}
+		} else
 			return ''
 	}
 
