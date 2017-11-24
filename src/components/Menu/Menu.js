@@ -72,7 +72,6 @@ class Menu extends Component {
 				</SceneDiv>
 			)
 		else {
-			console.log(children)
 			return (
 				<SceneDiv>
 					{this.renderNoTabs(children)}
