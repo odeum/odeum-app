@@ -17,8 +17,8 @@ export const HeaderDiv = styled.div`
 	color: ${props => props.theme.header.color};
 	${media.giant`height:80px;`}
 	${media.desktop`height:80px;`}
-	${media.tablet`height:50px;`}
-	${media.phone`height:30px;`}
+	${media.tablet`height:60px;`}
+	${media.phone`height:60px;`}
 `
 
 export const LogoDiv = styled(RouterLink)`
