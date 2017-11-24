@@ -93,7 +93,7 @@ class MenuPanel extends Component {
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}
-							SetHelpID={this.props.SetHelpID}
+							setHelpID={this.props.SetHelpID}
 							MenuID={index}
 							helpID={child.props.helpID}
 							active={this.state.activeMenu === (index) ? true : false}

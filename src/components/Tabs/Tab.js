@@ -9,7 +9,7 @@ class Tab extends Component {
 
 	componentWillMount() {
 		if (this.props.helpID && this.props.active) {
-			this.props.SetHelpID(this.props.helpID)
+			this.props.setHelpID(this.props.helpID)
 		}
 		if (window.location.pathname.includes(this.props.route) && this.props.activeTab !== this.props.tabID) {
 			this.activate()
