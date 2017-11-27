@@ -12,7 +12,7 @@ class MenuItem extends Component {
 	}
 	componentWillMount() {
 		if (this.props.helpID && this.props.active)
-			this.props.SetHelpID(this.props.helpID)
+			this.props.setHelpID(this.props.helpID)
 		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route))
 			this.activate()
 	}

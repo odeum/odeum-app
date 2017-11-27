@@ -10,20 +10,20 @@ export const HeaderDiv = styled.div`
 	display: flex;
 	flex-flow: row nowrap;
 	width: 100vw;
-	height: 80px;
+	height: ${props => props.theme.header.height ? props.theme.header.height : '80px'};
 	align-items: center;
 	justify-content: ${props => props.quicknav ? 'center' : 'space-between'};
 	background-color: ${props => props.theme.header.background};
 	color: ${props => props.theme.header.color};
 	${media.giant`height:80px;`}
 	${media.desktop`height:80px;`}
-	${media.tablet`height:50px;`}
-	${media.phone`height:30px;`}
+	${media.tablet`height:60px;`}
+	${media.phone`height:60px;`}
 `
 
 export const LogoDiv = styled(RouterLink)`
 	height: 50%;
-	max-height: 35px;
+	max-height: ${props => props.theme.logo.height ? props.theme.logo.height : '35px'};
 	align-self: center;
 	padding: 5px;
 `

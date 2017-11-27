@@ -18,24 +18,20 @@ class Header extends Component {
 
 	updateLogo = () => {
 		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
-		this.setState({ quicknav: window.innerWidth <= ScreenSizes.tablet ? true : false })
+		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
 	}
 	changeLogo = (logo) => {
 		this.setState({ logo: logo.default })
 	}
 	componentDidMount = () => {
 		if (this.props.logo !== undefined)
-			this.changeLogo(this.props.logo)
-		else
-			this.changeLogo(theme.logo)
+			this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
-
 	}
 	componentWillUpdate = (nextProps, nextState) => {
 		if (this.props.logo !== nextProps.logo)
 			this.changeLogo(nextProps.logo)
 	}
-
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}

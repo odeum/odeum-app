@@ -7,5 +7,5 @@ export const WorkspaceDiv = styled.div`
 	background-color: white;
 	padding: 10px;
 	overflow-y:auto;
-	border-radius: 0px 5px 5px 5px;
+	border-radius: ${props => props.noTab ? '5px' : '0px 5px 5px 5px'};
 `

@@ -58,9 +58,6 @@ export const Link = styled(RouterLink) `
 	&:hover{
 		background: ${props => props.theme.menu.hover}
 	}
-	&.active{
-		background: ${props => props.theme.menu.selected}
-	}
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;
 	transition: all 100ms ease-in-out;

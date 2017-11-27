@@ -2,6 +2,7 @@ import logo from './logo.svg'
 
 const theme = {
 	header: {
+		height: '80px',
 		background: '#2C3E50',
 		color: '#FFF'
 	},
@@ -41,7 +42,8 @@ const theme = {
 			color: '#FFF'
 		}
 	},
-	logo: {
+	logo: {		
+		height: '35px',
 		default: logo
 	}
 }
