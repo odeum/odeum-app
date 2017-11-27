@@ -28,7 +28,10 @@ class Header extends Component {
 			this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
 	}
-
+	componentWillUpdate = (nextProps, nextState) => {
+		if (this.props.logo !== nextProps.logo)
+			this.changeLogo(nextProps.logo)
+	}
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}
