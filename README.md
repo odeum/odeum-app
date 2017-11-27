@@ -156,6 +156,7 @@ const quicknavStyles = {
 
 ## 4.4. TODO:
 - [v] Custom themes available for integration through AppContainer + (test with custom theme)
+- Page component that basically wraps the funvtionality of <Menu> to create a page with a route and no label
 - Refactoring styles, naming, structure - emphasize code style
 - Quick Navigation style object prop
 - Documentation (up until now and continously)
