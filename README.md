@@ -26,7 +26,8 @@ ODEUM Code Web App Framework. All the basic components to set up the ODEUM Code 
 		- [4.1.2. Help](#412-help)
 	- [4.2. Routing](#42-routing)
 	- [4.3. Quick Navigation](#43-quick-navigation)
-	- [4.4. TODO:](#44-todo)
+	- [4.4. Login](#44-login)
+	- [4.5. TODO:](#45-todo)
 
 <!-- /TOC -->
 
@@ -154,9 +155,38 @@ const quicknavStyles = {
 
 ```
 
-## 4.4. TODO:
+## 4.4. Login
+Component that composes the actual login process for the owner app. The keep the API footprint light we only exhibits the Login component, the rest is up to the app developer. 
+
+Example:
+
+```js
+import { 	
+	..., 
+	Login } from 'odeum-app'
+...
+
+this.state = {
+	isLoggedIn: false
+...
+handleLogin = () => {	
+	this.setState({ isLoggedIn: })
+}
+
+
+}
+<Page route={'/'} exact>
+	<Login loggedIn={''}>
+		<LoginForm onLoginSuccess={this.handleLogin}/>
+	</Login>
+</Page>
+
+```
+
+## 4.5. TODO:
 - [v] Custom themes available for integration through AppContainer + (test with custom theme)
-- Page component that basically wraps the funvtionality of <Menu> to create a page with a route and no label
+- Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
+- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
 - Refactoring styles, naming, structure - emphasize code style
 - Quick Navigation style object prop
 - Documentation (up until now and continously)
