@@ -20,14 +20,14 @@ ODEUM Code Web App Framework. All the basic components to set up the ODEUM Code 
 	- [3.1. Additional ODEUM Code packages](#31-additional-odeum-code-packages)
 	- [3.2. Support packages for your styling and data management](#32-support-packages-for-your-styling-and-data-management)
 - [4. How to use odeum-app](#4-how-to-use-odeum-app)
-		- [4.0.1. Theme](#401-theme)
-	- [4.1. Configuration:](#41-configuration)
-		- [4.1.1. Logo](#411-logo)
-		- [4.1.2. Help](#412-help)
-	- [4.2. Routing](#42-routing)
-	- [4.3. Quick Navigation](#43-quick-navigation)
-	- [4.4. Login](#44-login)
-	- [4.5. TODO:](#45-todo)
+	- [4.1. Theme](#41-theme)
+	- [4.2. Configuration:](#42-configuration)
+		- [4.2.1. Logo](#421-logo)
+		- [4.2.2. Help](#422-help)
+	- [4.3. Routing](#43-routing)
+	- [4.4. Quick Navigation](#44-quick-navigation)
+	- [4.5. Login](#45-login)
+	- [4.6. TODO:](#46-todo)
 
 <!-- /TOC -->
 
@@ -82,7 +82,7 @@ import { Heading, Text } from 'odeum-primitives'
 
 # 4. How to use odeum-app
 
-### 4.0.1. Theme
+## 4.1. Theme
 Default theme is ODEUM Code theme. The theme file contains objects for colors, fonts and sizes for the selected theme.
 
 A theme is passed as a theme prop to the <AppContainer> component. 
@@ -97,7 +97,7 @@ import theme from './theme/bluehorizon.js'
 
 On a later stage we might provide setTheme and getTheme functions to pattern check the contents of the theme file to ensure that the objects contains the required values. 
 
-## 4.1. Configuration:
+## 4.2. Configuration:
 All components exported from **odeum-app** and **odeum-app** has propTypes and defaultProps. 
 
 All defaultProps are loaded with default values so a fully scaled down App template will look like this:
@@ -106,10 +106,10 @@ All defaultProps are loaded with default values so a fully scaled down App templ
 A template with named values and more props passed would look like this:
 [App_normal.js](./src/App_normal.js)
 
-### 4.1.1. Logo
+### 4.2.1. Logo
 Default logo is odeumcode_logo.svg which is loaded default by Header component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
 
-### 4.1.2. Help
+### 4.2.2. Help
 Help ID is initially propagated through props on Menu and Tab components through a helpID prop. 
 
 ```js
@@ -120,7 +120,7 @@ Help ID is initially propagated through props on Menu and Tab components through
 ```
 
 
-## 4.2. Routing
+## 4.3. Routing
 Routing will be encapsulated and processed by the routable components through a route prop. The routable components are:
 - AppContainer (makes the logo ('/') routable)
 - Menu
@@ -135,7 +135,7 @@ Examples:
 
 If no route props is provided the Menu or Tab component label will be used for automatically creating a route.
 
-## 4.3. Quick Navigation
+## 4.4. Quick Navigation
 
 To pass styles to the responsive Quick Navigation button use the following in MenuPanel directly:
 
@@ -155,7 +155,7 @@ const quicknavStyles = {
 
 ```
 
-## 4.4. Login
+## 4.5. Login
 Component that composes the actual login process for the owner app. The keep the API footprint light we only exhibits the Login component, the rest is up to the app developer. 
 
 Example:
@@ -183,8 +183,9 @@ handleLogin = () => {
 
 ```
 
-## 4.5. TODO:
+## 4.6. TODO:
 - [v] Custom themes available for integration through AppContainer + (test with custom theme)
+- Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
 - Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
 - Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
 - Refactoring styles, naming, structure - emphasize code style
