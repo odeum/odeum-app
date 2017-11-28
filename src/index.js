@@ -18,10 +18,12 @@ export {
 
 /* 
 export default {
-	Icon,
-	Button,
-	Modal,
-	ButtonPanel,
-	Worker
+	AppContainer,	
+	Footer,
+	Header,
+	Menu,
+	MenuPanel,
+	Tab,
+	Workspace
 }
 */
