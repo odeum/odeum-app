@@ -40,7 +40,7 @@ class Footer extends Component {
 						{' '} &nbsp; | {this.props.helpID}
 					</div>
 				</Link>
-				<Help small={this.state.small} helpID={this.props.helpID} />
+				<Help small={this.state.small} helpID={this.props.helpID} helpLabel={this.props.helpLabel}/>
 			</StyledFooter> : null
 		)
 	}

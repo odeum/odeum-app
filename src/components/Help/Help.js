@@ -8,7 +8,7 @@ class Help extends Component {
 			<HelpDiv small={this.props.small}>
 				<HelpButton>
 					<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
-					{!this.props.small ? <Bold>{this.props.label}</Bold> : null}
+					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
 				</HelpButton>
 			</HelpDiv>
 		)
@@ -16,12 +16,12 @@ class Help extends Component {
 }
 
 Help.propTypes = {
-	label: PropTypes.string,
+	helpLabel: PropTypes.string,
 	small: PropTypes.bool
 }
 
 Help.defaultProps = {
-	label: 'Need help?'
+	helpLabel: 'Need help?'
 }
 
 export default Help
