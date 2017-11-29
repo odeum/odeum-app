@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from '../Workspace/Workspace'
-import { convertLabelToRoute } from '../utils/Functions'
+import { convertLabelToRoute, isExact } from '../utils/Functions'
 
 
 class Menu extends Component {
@@ -35,10 +35,8 @@ class Menu extends Component {
 	//#region RenderChildren
 
 	renderChildren = (children) => children.map((child, index) => {
-		// console.log(child.props.exact, child.props.label)
 		return <Route key={index} path={this.route() + this.childRoute(child)}
-			exact={child.props.exact ? child.props.exact : undefined}
-			component={this.renderChild(child)} />
+			exact={isExact(this.route(child))} component={this.renderChild(child)} />
 	})
 
 	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>

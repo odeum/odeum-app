@@ -4,7 +4,7 @@ import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
-import { convertLabelToRoute } from '../utils/Functions'
+import { convertLabelToRoute, isExact } from '../utils/Functions'
 import {ScreenSizes as sizes } from '../../theme/media'
 import NotFound from '../AppContainer/NotFound'
 import Tab from '../Tabs/Tab'
@@ -106,7 +106,7 @@ class MenuPanel extends Component {
 			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
 				{children.map((child, i) => {
-					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child, i)} />
+					return <Route key={i} path={this.route(child)} exact={isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 				})}
 				<Route path={'*'} component={NotFound} />
 			</Switch>

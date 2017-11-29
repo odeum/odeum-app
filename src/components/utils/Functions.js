@@ -3,3 +3,10 @@ export const convertLabelToRoute = (label) => {
 	route = '/' + route
 	return route
 }
+
+export const isExact = (route) => {
+	if (route === "" || route === "/")
+		return true
+	else 
+		return false
+}
