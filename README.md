@@ -38,6 +38,7 @@ ODEUM Code Web App Framework. All the basic components to set up the ODEUM Code 
 - Menu
 - Tab
 - Workspace
+- Page
 - Footer
 
 # 2. Installation
