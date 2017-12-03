@@ -185,10 +185,10 @@ handleLogin = () => {
 
 ## 4.6. TODO:
 - [v] Custom themes available for integration through AppContainer + (test with custom theme)
-- [?v] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
+- [v] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
 - [v] Help label prop? Language ... 
+- [v] Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
 - Quick Navigation style object prop
-- Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
 - Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
 - 404 - page not found component
 - New responsive menu

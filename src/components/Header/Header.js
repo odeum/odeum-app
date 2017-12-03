@@ -68,7 +68,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-	logo: PropTypes.object || PropTypes.string,
+	logo: PropTypes.oneOf([PropTypes.object, PropTypes.string]),
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,
@@ -77,7 +77,8 @@ Header.propTypes = {
 Header.defaultProps = {
 	search: false,
 	notification: false,
-	avatar: false
+	avatar: false,
+	logo: theme.logo.default
 }
 
 export default Header
