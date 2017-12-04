@@ -32,20 +32,25 @@ const theme = {
 		hover: '#81C1EA',
 		unselected: '#E3E5E5'
 	},
+
 	icon: {
 		default: '#34495D',
 		selected: '#FFF'
 	}, 
+
 	quicknav: {
 		button: {
 			background: '#3B97D3',
 			color: '#FFF'
 		}
 	},
+
 	logo: {		
 		height: '35px',
 		default: logo
-	}
+	},
+
+	breakpoints: [40, 48, 64, 80]
 }
 
 export default theme
