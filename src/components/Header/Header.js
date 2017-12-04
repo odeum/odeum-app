@@ -68,7 +68,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-	logo: PropTypes.oneOf([PropTypes.object, PropTypes.string]),
+	logo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,

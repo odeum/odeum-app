@@ -25,7 +25,7 @@ export const LogoDiv = styled(RouterLink)`
 	height: 50%;
 	max-height: ${props => props.theme.logo.height ? props.theme.logo.height : '35px'};
 	align-self: center;
-	padding: 5px;
+	margin: ${props => props.theme.logo.margin ? props.theme.logo.margin : '5px'};
 `
 
 export const LogoImg = styled.img`

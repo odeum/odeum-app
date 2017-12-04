@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 // import theme from '../../theme/default'
 import media from '../../theme/media'
+
 export const Bold = styled.b`
-font-weight: 600;
+	font-weight: 600;
 `
 export const StyledFooter = styled.div`
 	display: flex;
@@ -23,7 +24,7 @@ export const StyledFooter = styled.div`
 	user-select: none;
 	${media.giant`height:40px;`}
 	${media.desktop`height:40px;`}
-	${media.tablet`height:0px;`}
+	${media.tablet`height:30px;`}
 	${media.phone`height:0px;`}
 `
 

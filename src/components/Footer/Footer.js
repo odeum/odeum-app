@@ -23,10 +23,10 @@ class Footer extends Component {
 	}
 
 	smallHelp = () => {
-		if (window.innerWidth <= ScreenSizes.tablet) {
+		if (window.innerWidth < ScreenSizes.tablet) {
 			this.setState({ small: true })
 		}
-		else if (window.innerWidth > ScreenSizes.tablet) {
+		else if (window.innerWidth >= ScreenSizes.tablet) {
 			this.setState({ small: false })
 		}
 	}
