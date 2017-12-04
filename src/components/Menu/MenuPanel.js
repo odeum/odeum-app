@@ -5,9 +5,11 @@ import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
-import {ScreenSizes as sizes } from '../../theme/media'
+import { ScreenSizes as sizes } from '../../theme/media'
 import NotFound from '../AppContainer/NotFound'
 import Tab from '../Tabs/Tab'
+
+
 class MenuPanel extends Component {
 	constructor(props) {
 		super(props)
@@ -41,8 +43,6 @@ class MenuPanel extends Component {
 
 	}
 	//#endregion 
-
-
 
 	//#region Routing + Get First Child Route 
 
@@ -78,7 +78,6 @@ class MenuPanel extends Component {
 		this.setState({ quicknav: bool })
 	)
 	setActiveMenu = (key) => {
-		// console.log('ActiveMenu', key)
 		this.setState({ activeMenu: key })
 	}
 
