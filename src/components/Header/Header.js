@@ -23,7 +23,7 @@ class Header extends Component {
 	changeLogo = (logo) => {
 		this.setState({ logo: logo.default })
 	}
-	componentDidMount = () => {
+	componentWillMount = () => {
 		this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
 	}
@@ -42,11 +42,12 @@ class Header extends Component {
 		<div>Avatar</div>
 	)
 
-	renderLogo = (logo) => (
+	renderLogo = () => {
+		return (
 		<LogoDiv to={'/'}>
-			<LogoImg src={logo} />
+			<LogoImg src={this.state.logo} />
 		</LogoDiv>)
-
+	}
 
 	renderSearchBar = () => {
 		return (<div>Search</div>)
@@ -54,11 +55,11 @@ class Header extends Component {
 
 	render() {
 		const { search, notification, avatar } = this.props
-		const { logo } = this.state
+		// const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
 			<HeaderDiv quicknav={this.state.quicknav}>
-				{renderLogo(logo)}
+				{renderLogo()}
 				{search && renderSearchBar()}
 				{avatar && renderAvatar()}
 				{notification && renderNotification()}
@@ -68,7 +69,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-	logo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+	logo: PropTypes.any,
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,

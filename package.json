@@ -1,6 +1,6 @@
 {
 	"name": "odeum-app",
-	"version": "0.2.43",
+	"version": "0.2.44",
 	"description": "ODEUM Code Web App foundation modules",
 	"main": "lib/index.js",
 	"author": "Christian Broberg",
@@ -26,7 +26,8 @@
 		"react-icons": "^2.2.7",
 		"react-modal": "^3.0.0",
 		"react-router-dom": "^4.2.2",
-		"styled-components": "^2.1.2"
+		"styled-components": "^2.1.2",
+		"prop-types": "^15.6.0"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
