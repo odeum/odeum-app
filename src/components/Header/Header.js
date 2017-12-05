@@ -79,7 +79,7 @@ Header.defaultProps = {
 	search: false,
 	notification: false,
 	avatar: false,
-	logo: theme.logo.default
+	logo: theme.logo
 }
 
 export default Header
