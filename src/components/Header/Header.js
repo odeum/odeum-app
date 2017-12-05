@@ -58,7 +58,7 @@ class Header extends Component {
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
 			<HeaderDiv quicknav={this.state.quicknav}>
-				{logo && renderLogo(logo)}
+				{renderLogo(logo)}
 				{search && renderSearchBar()}
 				{avatar && renderAvatar()}
 				{notification && renderNotification()}
