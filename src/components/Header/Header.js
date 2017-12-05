@@ -12,7 +12,7 @@ class Header extends Component {
 
 		this.state = {
 			quicknav: false,
-			logo: undefined
+			logo: this.props.logo
 		}
 	}
 
