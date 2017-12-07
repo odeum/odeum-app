@@ -39,7 +39,7 @@ export const TabItem = styled(NavLink)`
     min-width: 50px;
     margin:0px 30px;
     height: 30px;
-    color:black;
+    color:${({ activetab }) => activetab === 'true' ? 'royalblue' : 'black'};
     &:hover{
         color: royalblue;
     }

@@ -1,7 +1,18 @@
 import styled from 'styled-components'
 import media from '../../theme/media'
 // import theme from '../../theme/default'
-import { Icon} from 'odeum-ui'
+import { Icon } from 'odeum-ui'
+
+export const HelpPopUp = styled.div`
+background: white;
+border: 1px solid #3f3f3f;
+z-index: 1;
+height: 150px;
+width: 150px;
+position: fixed;
+bottom: 10%;
+right: 2%;
+`
 
 export const Bold = styled.b`
 	font-size: 12px;
