@@ -45,7 +45,7 @@ class Tab extends Component {
 
 	render() {
 		return (
-			<Link to={this.props.route} activetab={this.props.active.toString()} onClick={this.activate}>
+			<Link to={this.props.route} activetab={this.state.active.toString()} onClick={this.activate}>
 				<TabIconDiv><Icon color={this.iconIsActive()} iconSize={20} icon={this.props.icon ? this.props.icon : this.defaultProps.icon} style={{ marginRight: '0px' }} /></TabIconDiv>
 				<TabText>
 					{this.props.label}
