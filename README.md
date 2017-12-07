@@ -27,10 +27,6 @@ ODEUM Code Web App Framework. All the basic components to set up the ODEUM Code 
 	- [4.3. Routing](#43-routing)
 	- [4.4. Quick Navigation](#44-quick-navigation)
 	- [4.5. Login](#45-login)
-	- [4.6. TODO:](#46-todo)
-		- [4.6.1. Foundation:](#461-foundation)
-		- [4.6.2. Extension:](#462-extension)
-		- [4.6.3. Advanced:](#463-advanced)
 
 <!-- /TOC -->
 
@@ -186,32 +182,3 @@ handleLogin = () => {
 </Page>
 
 ```
-
-## 4.6. TODO:
-
-### 4.6.1. Foundation:
-- [v] Custom themes available for integration through AppContainer + (test with custom theme)
-- [v] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
-- [v] Help label prop? Language ... 
-- [v] Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
-- Help Redux functions (functional approach)
-- Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
-- Quick Navigation style object prop
-- Quick Navigation select first tab when only 1
-- Quick Navigation 'menu' icon default else from theme
-- Prop to open and close MenuPanel from code/state
-- 404 - page not found component
-
-### 4.6.2. Extension:
-- Form component
-- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
-- Responsive API for component builders
-- Search
-- Notifications
-- Error Boundaries
-- Documentation
-- How to - manual - README - [www.odeumcode.com](www.odeumcode.com)
-
-### 4.6.3. Advanced:
-- React Native reusability study (what can we reuse?)
-
