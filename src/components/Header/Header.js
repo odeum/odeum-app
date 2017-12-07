@@ -42,12 +42,11 @@ class Header extends Component {
 		<div>Avatar</div>
 	)
 
-	renderLogo = () => {
-		return (
+	renderLogo = () => (
 		<LogoDiv to={'/'}>
 			<LogoImg src={this.state.logo} />
 		</LogoDiv>)
-	}
+
 
 	renderSearchBar = () => {
 		return (<div>Search</div>)

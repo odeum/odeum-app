@@ -4,12 +4,11 @@ import {
 	Spacer, TabList, TabItem,
 	MenuItem, MenuList, Link
 } from './QuickNavigationStyles'
-// import { NavLink } from 'react-router-dom'
 import Tab from '../Tabs/Tab'
 import { convertLabelToRoute } from '../utils/Functions'
 
 //TODO:
-//7. Active Menu Item, Active Tab Item
+//7. Active Menu Item
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -18,36 +17,49 @@ export default class QuickNavigation extends Component {
 		this.state = {
 			quickNav: false,
 			showButton: true,
-			activeMenu: 0
+			activeMenu: 0,
+			activeTab: {
+				tab: 0,
+				menu: 0
+			}
 		}
 	}
-	tabClick = () => {
-		this.setState({ quickNav: false })
+
+	tabClick = (e) => {
+		var activeTab = { tab: parseInt(e.target.id, 10), menu: this.state.activeMenu }
+		this.setState({ quickNav: false, activeTab: activeTab })
 	}
+
 	menuClick = () => (e) => {
 		e.stopPropagation()
 	}
-	setActiveMenu = (index) => (e) => {
+
+	setActiveMenu = (index, closeNav) => (e) => {
 		e.preventDefault()
 		e.stopPropagation()
-		this.setState({ activeMenu: index })
+		this.setState({ activeMenu: index, quickNav: !closeNav })
 	}
+
 	openNav = () => {
 		this.setState({ quickNav: !this.state.quickNav })
 	}
 
+	activeTab = (tab, menu) => tab === this.state.activeTab.tab && menu === this.state.activeTab.menu ? 'true' : 'false'
+
 	renderMenuItem = (menu, index) => {
 		var route = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
 		if (React.Children.toArray(menu.props.children)[0].type === Tab)
-			return <MenuItem key={index} onClick={this.setActiveMenu(index)}>{menu.props.label}</MenuItem>
+			return <MenuItem key={index} onClick={this.setActiveMenu(index, false)}>{menu.props.label}</MenuItem>
 		else
-			return <MenuItem key={index} onClick={this.setActiveMenu(index)}><Link to={route}>{menu.props.label}</Link></MenuItem>
+			return <MenuItem key={index} onClick={this.setActiveMenu(index, true)}><Link to={route}>{menu.props.label}</Link></MenuItem>
 	}
+
 	renderTabItem = (tab, menu, index) => {
-		var menuRoute = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
-		var route = tab.props.route ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
-		return <TabItem key={index} to={route} onClick={this.tabClick}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
+		var menuRoute = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
+		var route = tab.props.route !== undefined ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
+		return <TabItem key={index} activetab={this.activeTab(index, this.state.activeMenu)} id={index} to={route} onClick={this.tabClick}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
 	}
+
 	render() {
 		// console.log(this.props)
 		const { quickNav } = this.state

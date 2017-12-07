@@ -5,21 +5,28 @@ import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from '../Workspace/Workspace'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
-
+import { SetHelpID } from '../utils/HelpReducer'
 
 class Menu extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			activeTab: 0
+			activeTab: -1
 		}
 	}
 
 
 	componentWillMount = () => {
-		if (window.location.pathname.includes(this.props.route) && this.props.activeMenu !== this.props.index) {
+		if (window.location.pathname.includes(this.props.route) && this.props.index !== undefined && this.props.activeMenu !== this.props.index) {
 			this.props.setActiveMenu(this.props.index)
+		}
+		this.setHelpID()
+	}
+
+	setHelpID = () => {
+		if (this.props.helpID) {
+			SetHelpID(this.props.helpID)
 		}
 	}
 
@@ -36,7 +43,8 @@ class Menu extends Component {
 
 	renderChildren = (children) => children.map((child, index) => {
 		return <Route key={index} path={this.route() + this.childRoute(child)}
-			exact={isExact(this.route(child))} component={this.renderChild(child)} />
+			exact={isExact(this.route(child))}
+			component={this.renderChild(child)} />
 	})
 
 	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
@@ -45,8 +53,10 @@ class Menu extends Component {
 
 	setActiveTab = (key) => {
 		this.setState({ activeTab: key })
-
+		if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
+			this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
 	}
+
 	renderTabs = (children) => {
 		if (children[0].type === Tab)
 			return (
@@ -54,14 +64,14 @@ class Menu extends Component {
 					{!this.props.quicknav ? <TabList>
 						{children.map((child, index) => (
 							<Tab key={index}
-								helpID={child.props.helpID}
+								helpID={child.props.helpID ? child.props.helpID : undefined}
 								tabID={index}
-								active={index === this.state.activeTab ? true : false}
+								exact={isExact(this.childRoute(child))}
 								label={child.props.label}
 								icon={child.props.icon}
 								route={this.route() + this.childRoute(child)}
 								setActiveTab={this.setActiveTab}
-								activeTab={this.state.activeTab}/>
+								activeTab={this.state.activeTab} />
 						))}
 					</TabList> : null}
 					<Switch>

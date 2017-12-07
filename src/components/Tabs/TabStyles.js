@@ -49,6 +49,7 @@ export const SceneDiv = styled.div`
 	flex: 5;
 	flex-flow: column nowrap;
 	margin: 20px 20px 20px 20px;
+	overflow-y:auto;
 `
 
 export const TabIconDiv = styled.div`

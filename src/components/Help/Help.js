@@ -1,15 +1,49 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { HelpDiv, Bold, HelpIcon, HelpButton } from './HelpStyles'
+import { HelpDiv, Bold, HelpIcon, HelpButton, HelpPopUp } from './HelpStyles'
+import { GetHelpID } from '../utils/HelpReducer'
 
 class Help extends Component {
-	render() {		
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			openHelp: false
+		}
+	}
+	setHelpPopUpRef = (node) => {
+		this.node = node
+	}
+	renderHelp = () => {
+		var helpID = GetHelpID()
+		return <HelpPopUp innerRef={this.setHelpPopUpRef}>
+			<h1>
+				{helpID}
+			</h1>
+			<p>Description</p>
+		</HelpPopUp>
+	}
+
+	onClickOutsise = (e) => {
+		if (this.state.openHelp) {
+			if (!this.node.contains(e.target)) {
+				this.setState({ openHelp: false })
+				document.removeEventListener('click', this.onClickOutsise, false)
+			}
+		}
+	}
+	openHelp = () => {
+		document.addEventListener('click', this.onClickOutsise, false)
+		this.setState({ openHelp: !this.state.openHelp })
+	}
+	render() {
 		return (
 			<HelpDiv small={this.props.small}>
-				<HelpButton>
+				<HelpButton onClick={this.openHelp}>
 					<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
 					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
 				</HelpButton>
+				{this.state.openHelp && this.renderHelp()}
 			</HelpDiv>
 		)
 	}

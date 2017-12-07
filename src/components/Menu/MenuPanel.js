@@ -3,12 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
+import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { ScreenSizes as sizes } from '../../theme/media'
-import NotFound from '../AppContainer/NotFound'
 import Tab from '../Tabs/Tab'
-
 
 class MenuPanel extends Component {
 	constructor(props) {
@@ -29,8 +28,8 @@ class MenuPanel extends Component {
 	}
 
 	//#region Display quickNav or Menu 
+	
 	updateWindowSize = () => {
-		// console.log('MenuDiv', 'resized')s
 		if (window.innerWidth < sizes.tablet)
 			//QuickNav on
 			this.setState({
@@ -85,14 +84,14 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
+
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}
-							setHelpID={this.props.SetHelpID}
 							MenuID={index}
 							helpID={child.props.helpID}
 							active={this.state.activeMenu === (index) ? true : false}
