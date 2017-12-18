@@ -20,14 +20,14 @@
 - Quick Navigation style object prop
 - Quick Navigation select first tab when only 1
 - Quick Navigation 'menu' icon default else from theme
-- Prop to open and close MenuPanel from code/state
+- Prop to open and close MenuPanel from code/state (MenuAchordeon)
 - 404 - page not found component
 - Documentation
 - How to - manual - README - [www.odeumcode.com](www.odeumcode.com)
 
 ### 1.1.2. Extensions:
 - Form component
-- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
+- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private (protected) routes. 
 - Responsive API for component builders
 - Search
 - Notifications
