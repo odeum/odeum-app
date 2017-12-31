@@ -53,12 +53,13 @@ class Header extends Component {
 	}
 
 	render() {
-		const { search, notification, avatar } = this.props
+		const { render, search, notification, avatar } = this.props
 		// const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
 			<HeaderDiv quicknav={this.state.quicknav}>
 				{renderLogo()}
+				{render && render()}
 				{search && renderSearchBar()}
 				{avatar && renderAvatar()}
 				{notification && renderNotification()}
@@ -69,6 +70,7 @@ class Header extends Component {
 
 Header.propTypes = {
 	logo: PropTypes.any,
+	render: PropTypes.func,
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,
