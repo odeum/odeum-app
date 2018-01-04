@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
-import { MenuContainer } from './MenuStyles'
+// import { MenuContainer } from './MenuStyles'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
@@ -10,6 +10,7 @@ import { ScreenSizes as sizes } from '../../theme/media'
 import Tab from '../Tabs/Tab'
 import { Redirect } from 'react-router-dom'
 import Protected from '../Login/Protected'
+import Menu from './Menu'
 
 class MenuPanel extends Component {
 
@@ -102,17 +103,17 @@ class MenuPanel extends Component {
 
 	renderRoutes = (children) => {
 		return children.map((child, i) => {
-			if (child.type !== Protected && !child.props.bottom && !child.props.top) {
+			if (child.type !== Protected && child.type === Menu) {
 				return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 			}
 			else {
 				if (this.props.isLoggedIn !== false) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
-						if (!child.props.bottom && !child.props.top)
+						if (child.type === Menu) {	
 							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i + proti)} />
-						else
-							return null
+						}
+						else return null
 					})
 				}
 				else {
@@ -130,13 +131,20 @@ class MenuPanel extends Component {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
 						if (protchild.props.bottom && !protchild.props.top)
-							BottomItems.push(protchild)
+							if (protchild.type !== Menu)
+								BottomItems.push(protchild)
+							else 
+								BottomItems.push(this.renderMenuItem(protchild, index + protindex))
 					})
 				}
 			}
 			else {
 				if (child.props.bottom && !child.props.top)
-					BottomItems.push(child)
+					if (child.type !== Menu)
+						BottomItems.push(child)
+					else 
+						BottomItems.push(this.renderMenuItem(child, index))
+					
 			}
 		})
 		return BottomItems
@@ -150,13 +158,20 @@ class MenuPanel extends Component {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
 						if (!protchild.props.bottom && protchild.props.top)
-							TopItems.push(protchild)
+							if (protchild.type !== Menu)
+								TopItems.push(protchild)
+							else 
+								TopItems.push(this.renderMenuItem(protchild, index + protindex))
+
 					})
 				}
 			}
 			else {
 				if (!child.props.bottom && child.props.top)
-					TopItems.push(child)
+					if (child.type !== Menu)
+						TopItems.push(child)
+					else
+						TopItems.push(this.renderMenuItem(child, index))
 			}
 
 		})
