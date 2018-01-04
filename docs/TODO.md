@@ -15,12 +15,14 @@
 - [v] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
 - [v] Help label prop? Language ... 
 - [v] Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
-- Help Redux functions (functional approach)
-- Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
+- [v] Help Redux functions (functional approach)
+- [v] Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
+	<!-- Help is not getting stuff from a static object but it renders the ID of the active tab/menuItem in a small pop up through Redux-->
+- Help Pop-over Styling
 - Quick Navigation style object prop
 - Quick Navigation select first tab when only 1
 - Quick Navigation 'menu' icon default else from theme
-- Prop to open and close MenuPanel from code/state
+- Function to open and close MenuPanel from code/state
 - 404 - page not found component
 
 ### 1.1.2. Extension:
