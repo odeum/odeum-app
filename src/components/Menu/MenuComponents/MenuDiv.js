@@ -19,7 +19,7 @@ class MenuDiv extends Component {
 			<MenuCont achordeon={this.state.achordeon}>
 				<MenuHeader>
 					{this.props.top.length === 0 ? <IconDiv onClick={this.switch}
-						style={{ cursor: 'pointer' }}>
+						style={{ cursor: 'pointer', alignSelf: 'left' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
 					</IconDiv> : this.props.top}
 				</MenuHeader>

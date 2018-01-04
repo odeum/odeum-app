@@ -26,8 +26,10 @@ export const MenuHeader = BaseItem.extend`
 	display: flex;
 	flex-flow:column;
 	height: auto;
-	align-items: left;
+	align-items: center;
+	justify-content: center;
 `
+
 export const MenuFooter = BaseItem.extend`
 display: flex;
 flex-flow:column;
