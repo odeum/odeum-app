@@ -18,8 +18,8 @@ class Menu extends Component {
 
 
 	componentWillMount = () => {
-		if (window.location.pathname.includes(this.props.route) && this.props.index !== undefined && this.props.activeMenu !== this.props.index) {
-			this.props.setActiveMenu(this.props.index)
+		if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
+			this.props.setActiveMenu(this.props.MenuID)
 		}
 		this.setHelpID()
 	}
@@ -43,7 +43,7 @@ class Menu extends Component {
 
 	renderChildren = (children) => children.map((child, index) => {
 		return <Route key={index} path={this.route() + this.childRoute(child)}
-			exact={isExact(this.route(child))}
+			exact={isExact(this.childRoute(child))}
 			component={this.renderChild(child)} />
 	})
 
@@ -106,7 +106,5 @@ Menu.propTypes = {
 	route: PropTypes.string,
 	icon: PropTypes.string,
 }
-
-
 
 export default Menu

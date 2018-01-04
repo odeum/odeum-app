@@ -1,15 +1,14 @@
 
-// these sizes are arbitrary and you can set them to whatever you wish
 import styled from 'styled-components'
-// import theme from '../../theme/default'
-import media from '../../theme/media'
+import media from 'theme/media'
 import { Link as RouterLink } from 'react-router-dom'
 
 export const HeaderDiv = styled.div`
+	grid-area:header;
 	color: #333;
 	display: flex;
 	flex-flow: row nowrap;
-	width: 100vw;
+	/* width: 100vw; */
 	height: ${props => props.theme.header.height ? props.theme.header.height : '80px'};
 	align-items: center;
 	justify-content: ${props => props.quicknav && 'center'};
@@ -23,8 +22,8 @@ export const HeaderDiv = styled.div`
 `
 
 export const LogoDiv = styled(RouterLink)`
-	height: 50%;
-	max-height: ${props => props.theme.logo.height ? props.theme.logo.height : '35px'};
+	/* height: 50%; */
+	height: ${props => props.theme.logo.height ? props.theme.logo.height : '35px'};
 	align-self: center;
 	margin: ${props => props.theme.logo.margin ? props.theme.logo.margin : '5px'};
 `

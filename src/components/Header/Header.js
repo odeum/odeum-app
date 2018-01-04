@@ -28,7 +28,8 @@ class Header extends Component {
 		window.addEventListener('resize', this.updateLogo)
 	}
 	componentWillUpdate = (nextProps, nextState) => {
-		if (this.props.logo !== nextProps.logo)
+		var nextLogo = nextProps.logo.default
+		if (nextLogo !== undefined && this.state.logo !== nextLogo)
 			this.changeLogo(nextProps.logo)
 	}
 	componentWillUnmount = () => {
@@ -58,11 +59,14 @@ class Header extends Component {
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
 			<HeaderDiv quicknav={this.state.quicknav}>
-				{renderLogo()}
-				{render && render()}
-				{search && renderSearchBar()}
-				{avatar && renderAvatar()}
-				{notification && renderNotification()}
+				{this.props.children ? this.props.children : <React.Fragment>
+					{renderLogo()}
+					{render && render()}
+					{search && renderSearchBar()}
+					{avatar && renderAvatar()}
+					{notification && renderNotification()}
+				</React.Fragment>
+				}
 			</HeaderDiv>
 		)
 	}

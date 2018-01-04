@@ -1,6 +1,14 @@
 import logo from './logo.svg'
 
 const theme = {
+	app: {
+		gridArea: 
+		'"menupanel header"' 
+		+ '"menupanel workspace"' 
+		+ '"menupanel footer"',
+		gridTemplateRows: 'auto 1fr auto',
+		gridTemplateColumns: 'auto 1fr'
+	},
 	header: {
 		height: '80px',
 		background: '#2C3E50',
@@ -32,20 +40,24 @@ const theme = {
 		hover: '#81C1EA',
 		unselected: '#E3E5E5'
 	},
-
 	icon: {
 		default: '#34495D',
 		selected: '#FFF'
-	}, 
-
+	},
 	quicknav: {
 		button: {
-			background: '#3B97D3',
+			background: '#216795',
+			unselected: '#E3E5E5',
 			color: '#FFF'
+		},
+		tab: {
+			selected: '#3B97D3',
+			unselected: '#000'
 		}
 	},
 
 	logo: {		
+		margin: '5px',
 		height: '35px',
 		default: logo
 	},

@@ -1,16 +1,16 @@
 import styled from 'styled-components'
-// import theme from '../../theme/default'
 import media from '../../theme/media'
 
 export const Bold = styled.b`
 	font-weight: 600;
 `
 export const StyledFooter = styled.div`
+	grid-area: footer;
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: center;
-	width: 100vw;
+	/* width: 100vw; */
 	height:40px;
 	background: ${props => props.theme.footer.background};
 	color: ${props => props.theme.footer.color};
@@ -34,4 +34,3 @@ export const Link = styled.a`
 	justify-content: center;
 	color: black;
 `
-

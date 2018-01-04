@@ -5,6 +5,8 @@ import Menu from './components/Menu/Menu'
 import MenuPanel from './components/Menu/MenuPanel'
 import Tab from './components/Tabs/Tab'
 import Workspace from './components/Workspace/Workspace'
+import Protected from './components/Login/Protected'
+import Login from './components/Login/Login'
 
 export {
 	AppContainer,	
@@ -13,7 +15,9 @@ export {
 	Menu,
 	MenuPanel,
 	Tab,
-	Workspace
+	Workspace,
+	Protected,
+	Login
 }
 
 /* 

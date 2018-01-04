@@ -4,14 +4,15 @@ import media from '../../theme/media'
 import { Icon } from 'odeum-ui'
 
 export const HelpPopUp = styled.div`
-background: white;
-border: 1px solid #3f3f3f;
-z-index: 1;
-height: 150px;
-width: 150px;
-position: fixed;
-bottom: 10%;
-right: 2%;
+	background: white;
+	border: 1px solid #3f3f3f;
+	z-index: 99;
+	height: 90vh;
+	width: 90vw;
+	position: fixed;
+    left: 50%;
+	top: 5%;
+    transform: translate(-50%, 0);
 `
 
 export const Bold = styled.b`

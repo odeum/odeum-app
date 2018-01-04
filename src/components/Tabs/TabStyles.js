@@ -2,7 +2,6 @@ import styled from 'styled-components'
 // import theme from 'theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
 
-
 export const TabList = styled.div`
 	flex: 1;
  	display: flex;
@@ -34,7 +33,7 @@ export const Link = styled(RouterLink) `
 	flex-flow: row nowrap;
 	border-radius: 5px 5px 0px 0px;
 	color: ${props => props.activetab === 'true' ? '#fff' : '#000'};
-	background: ${props => props.activetab === 'true' ? props.theme.tab.selected : props.theme.tab.unselected};
+	background: ${props =>  props.activetab === 'true' ? props.theme.tab.selected : props.theme.tab.unselected };
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;
 	transition: all 100ms ease-in-out;
@@ -45,11 +44,12 @@ export const Link = styled(RouterLink) `
 `
 
 export const SceneDiv = styled.div`
+	grid-area:workspace;
 	display: flex;
-	flex: 5;
 	flex-flow: column nowrap;
 	margin: 20px 20px 20px 20px;
 	overflow-y:auto;
+	-webkit-overflow-scrolling: touch;
 `
 
 export const TabIconDiv = styled.div`
