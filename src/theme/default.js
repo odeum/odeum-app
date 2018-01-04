@@ -3,9 +3,9 @@ import logo from './logo.svg'
 const theme = {
 	app: {
 		gridArea: 
-		'"menupanel header"' 
+		'"header header"' 
 		+ '"menupanel workspace"' 
-		+ '"menupanel footer"',
+		+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
