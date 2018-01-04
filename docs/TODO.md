@@ -3,14 +3,14 @@
 
 - [1. TODO for odeum-app](#1-todo-for-odeum-app)
 	- [1.1. TODO:](#11-todo)
-		- [1.1.1. Foundation:](#111-foundation)
-		- [1.1.2. Extension:](#112-extension)
+		- [1.1.1. Foundation (Core):](#111-foundation-core)
+		- [1.1.2. Extensions:](#112-extensions)
 		- [1.1.3. Advanced:](#113-advanced)
 
 <!-- /TOC -->
 ## 1.1. TODO:
 
-### 1.1.1. Foundation:
+### 1.1.1. Foundation (Core):
 - [v] Custom themes available for integration through AppContainer + (test with custom theme)
 - [v] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
 - [v] Help label prop? Language ... 
@@ -22,19 +22,23 @@
 - Quick Navigation style object prop
 - Quick Navigation select first tab when only 1
 - Quick Navigation 'menu' icon default else from theme
+<<<<<<< HEAD
 - Function to open and close MenuPanel from code/state
+=======
+- Prop to open and close MenuPanel from code/state (MenuAchordeon)
+>>>>>>> b290a680debe5916dcf1f39782836adbe3cf4455
 - 404 - page not found component
+- Documentation
+- How to - manual - README - [www.odeumcode.com](www.odeumcode.com)
 
-### 1.1.2. Extension:
+### 1.1.2. Extensions:
 - Form component
-- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
+- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private (protected) routes. 
 - Responsive API for component builders
 - Search
 - Notifications
 - Error Boundaries
-- Tip of the day (show tips or shout outs after a user logs in or starts the web app)
-- Documentation
-- How to - manual - README - [www.odeumcode.com](www.odeumcode.com)
+- Tip of the day (show tips or shout-outs after a user logs in or starts the web app)
 
 ### 1.1.3. Advanced:
 - React Native reusability study (what can we reuse?)
