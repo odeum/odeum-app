@@ -1,6 +1,6 @@
 
 import styled from 'styled-components'
-import media from 'theme/media'
+import media from '../../theme/media'
 import { Link as RouterLink } from 'react-router-dom'
 
 export const HeaderDiv = styled.div`
