@@ -81,7 +81,6 @@ class MenuPanel extends Component {
 		this.setState({ quicknav: bool })
 	)
 	setActiveMenu = (label, id) => {
-		// console.log('Setting as active', label, id)
 		this.setState({ activeMenu: label })
 	}
 
@@ -90,7 +89,6 @@ class MenuPanel extends Component {
 	//#region Rendering
 
 	renderMenuItem = (child, index) => {
-		// console.log(child.props.label, index)
 		return <MenuItem key={index}
 			MenuID={index}
 			helpID={child.props.helpID}

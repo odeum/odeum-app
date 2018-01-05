@@ -60,6 +60,17 @@ const theme = {
 		margin: '5px',
 		height: '35px',
 		default: logo
+	},	
+	input: {
+		color: '#2C3E50',
+		background: '#ECF0F1',
+		focusColor: '#13A085',
+		borderRadius: '4px'
+	},
+	button: {
+		background: '#3B97D3',
+		color: 'white',
+		height: '35px'
 	},
 
 	breakpoints: [40, 48, 64, 80]
