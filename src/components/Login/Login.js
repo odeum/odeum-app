@@ -1,5 +1,5 @@
 import React from 'react'
-import Menu from 'components/Menu/Menu'
+import Menu from '../Menu/Menu'
 import { Redirect } from 'react-router-dom'
 import LoginForm from './LoginForm'
 
