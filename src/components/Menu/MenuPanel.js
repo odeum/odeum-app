@@ -96,19 +96,20 @@ class MenuPanel extends Component {
 			icon={child.props.icon}
 			label={child.props.label}
 			route={this.route(child) + this.getFirstChildRoute(child)}
-			onClick={this.setActiveMenu} />
+			onClick={this.setActiveMenu}
+			arrow={this.props.Arrows} />
 	}
 
 	renderRoutes = (children) => {
 		return children.map((child, i) => {
-			if (child.type !== Protected && child.type === Menu) {
+			if (child.type !== Protected && (child.type === Menu || child.type === Page)) {
 				return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 			}
 			else {
 				if (this.props.isLoggedIn !== false) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
-						if (child.type === Menu) {	
+						if (child.type === Menu || child.type === Page) {	
 							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i + proti)} />
 						}
 						else return null
@@ -121,9 +122,9 @@ class MenuPanel extends Component {
 			}
 		})
 	}
+
 	renderBottomItems = (children) => {
 		var BottomItems = []
-		console.log(children)
 		children.forEach((child, index) => {
 			if (child.type === Protected) {
 				if (this.props.isLoggedIn !== false) {
@@ -180,7 +181,6 @@ class MenuPanel extends Component {
 	}
 
 	renderMenuItems = (children) => {
-		// console.log(children)
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn === false) {
