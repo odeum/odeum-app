@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MenuDiv as MenuCont, MenuHeader, IconDiv, MenuFooter } from '../MenuStyles'
+import { MenuDiv as MenuCont, MenuHeader, IconDiv, MenuFooter, DefaultHeader } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
 
 class MenuDiv extends Component {
@@ -17,12 +17,14 @@ class MenuDiv extends Component {
 	render() {
 		return (
 			<MenuCont achordeon={this.state.achordeon}>
-				<MenuHeader>
-					{this.props.top.length === 0 ? <IconDiv onClick={this.switch}
+				{this.props.top.length === 0 ? <DefaultHeader>
+					<IconDiv onClick={this.switch}
 						style={{ cursor: 'pointer', alignSelf: 'left' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
-					</IconDiv> : this.props.top}
-				</MenuHeader>
+					</IconDiv> 
+				</DefaultHeader>
+					: <MenuHeader>{this.props.top}</MenuHeader>}
+				
 				{this.props.children}
 				<MenuFooter>
 					{this.props.bottom ? this.props.bottom : null}

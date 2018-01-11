@@ -1,5 +1,6 @@
 import logo from './logo.svg'
 
+
 const theme = {
 	app: {
 		gridArea: 
@@ -20,7 +21,9 @@ const theme = {
 		color: '#FFF',
 		selected: '#216795',
 		hover: '#81C1EA',
-		bottomBorder: '1px solid #3087bf'
+		border: '1px solid #3087bf',
+		textHover: '#FFF',
+		fontSize: ''
 	},
 
 	footer: {
@@ -55,7 +58,6 @@ const theme = {
 			unselected: '#000'
 		}
 	},
-
 	logo: {		
 		margin: '5px',
 		height: '35px',

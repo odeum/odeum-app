@@ -16,24 +16,24 @@ class Header extends Component {
 		}
 	}
 
-	updateLogo = () => {
-		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
+	quickNav = () => {
 		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
+		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
 	}
 	changeLogo = (logo) => {
 		this.setState({ logo: logo.default })
 	}
 	componentWillMount = () => {
-		this.updateLogo()
-		window.addEventListener('resize', this.updateLogo)
+		this.quickNav()
+		window.addEventListener('resize', this.quickNav)
 	}
 	componentWillUpdate = (nextProps, nextState) => {
 		var nextLogo = nextProps.logo.default
 		if (nextLogo !== undefined && this.state.logo !== nextLogo)
-			this.changeLogo(nextProps.logo)
+			this.quickNav(nextProps.logo)
 	}
 	componentWillUnmount = () => {
-		window.removeEventListener('resize', this.changeLogo)
+		window.removeEventListener('resize', this.quickNav)
 	}
 	renderNotification = () => (
 		<div>NotiF</div>

@@ -10,5 +10,10 @@ export const AppDiv = styled.div`
 	height: 100vh;
 	width: 100vw;
 	background-color: ${({ theme }) => theme.workspace.background};	
+		
+	/*IE Support */
+	display: -ms-grid;
+	-ms-grid-columns: ${({ theme }) => theme.app ?  theme.app.gridTemplateColumns ? theme.app.gridTemplateColumns : "max-content 1fr" : "max-content 1fr" };
+	-ms-grid-rows: ${({ theme }) => theme.app ?  theme.app.gridTemplateRows ? theme.app.gridTemplateRows : 'auto 1fr auto' : 'auto 1fr auto'};	
 `
 
