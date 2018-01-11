@@ -68,6 +68,7 @@ export default class QuickNavigation extends Component {
 		}
 		else return this.renderMenuItem(menu, index)
 	}
+
 	renderMenuItem = (menu, index) => {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		if (menu.type === Menu)
@@ -102,31 +103,22 @@ export default class QuickNavigation extends Component {
 	renderTabItem = (tab, menu, index) => {
 		var menuRoute = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
 		var route = tab.props.route !== undefined ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
-		// console.log(menu, menuRoute, menu.props.route)
-		// console.log('----')
-		// console.log(tab, tab.props.route, route)
 		return <TabItem key={index.protected ? index.index + index.protected : index} helpid={tab.props.helpID} activetab={this.activeTab(index, this.state.activeMenu)} id={index} to={route} onClick={this.tabClick(index, tab.props.helpID)}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
 	}
-	renderProtectedTabs() {
-		// return React.Children.toArray(this.state.activeMenu.props.children).map((tab, index) => {
-		// 	console.log('tab', tab)
-		// 	return this.renderTabItem(tab, this.state.activeMenu, index)}
-		// )
-	}
+
 	renderTabs() {
 		if (this.state.activeMenu.protected !== undefined)
 		{	
 			var ProtectedMenu = this.props.menus[this.state.activeMenu.index].props.children
-			return React.Children.toArray(ProtectedMenu[this.state.activeMenu.protected].props.children).map((tab, index) => {
-				 return this.renderTabItem(tab, ProtectedMenu[this.state.activeMenu.protected], { index: this.state.activeMenu.index, protected: index })
-			})
-			
+			return React.Children.toArray(ProtectedMenu[this.state.activeMenu.protected].props.children).map((tab, index) => 
+			 tab.type === Tab ? this.renderTabItem(tab, ProtectedMenu[this.state.activeMenu.protected], { index: this.state.activeMenu.index, protected: index }) : undefined)
 		}
 		else {
 			return React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).map((tab, index) =>
 				tab.type === Tab ? this.renderTabItem(tab, this.props.menus[this.state.activeMenu], index) : undefined)
 		}
 	}
+
 	render() {
 		// console.log(this.props)
 		const { quickNav, showHelp } = this.state
