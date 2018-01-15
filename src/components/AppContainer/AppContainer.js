@@ -13,7 +13,7 @@ class AppContainer extends Component {
 		return (
 			<Router>
 				<ThemeProvider theme={this.props.theme ? this.props.theme : theme} >
-					<AppDiv>
+					<AppDiv style={this.props.style ? this.props.style : undefined}>
 						{this.props.children}
 					</AppDiv>
 				</ThemeProvider>
