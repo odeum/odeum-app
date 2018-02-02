@@ -9,4 +9,5 @@ export const WorkspaceDiv = styled.div`
 	overflow-y:auto;
 	-webkit-overflow-scrolling: touch;
 	border-radius: ${props => props.noTab ? '5px' : '0px 5px 5px 5px'};
+	color: ${p => p.theme.workspace.color ? p.theme.workspace.color : '#000'};
 `

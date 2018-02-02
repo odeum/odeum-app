@@ -1,4 +1,3 @@
-
 import styled from 'styled-components'
 import media from '../../theme/media'
 import { Link as RouterLink } from 'react-router-dom'
@@ -24,11 +23,11 @@ export const HeaderDiv = styled.div`
 	/* IE Support */
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'row')};
-	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'header', 'column');return x > 1 ? x : 'none'}};
-	-ms-grid-row-span: ${p => {var x = spanRowCalc(p.theme.app.gridArea, 'header');return x > 1 ? x : 'none'}};
+	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'header', 'column'); return x > 1 ? x : 'none' }};
+	-ms-grid-row-span: ${p => { var x = spanRowCalc(p.theme.app.gridArea, 'header'); return x > 1 ? x : 'none' }};
 `
 
-export const LogoDiv = styled(RouterLink)`
+export const LogoDiv = styled(RouterLink) `
 	/* height: 50%; */
 	height: ${props => props.theme.logo.height ? props.theme.logo.height : '35px'};
 	align-self: center;

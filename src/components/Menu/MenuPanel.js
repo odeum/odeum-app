@@ -27,6 +27,7 @@ class MenuPanel extends Component {
 		this.updateWindowSize()
 		window.addEventListener('resize', this.updateWindowSize)
 	}
+
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.updateWindowSize)
 	}
@@ -97,7 +98,7 @@ class MenuPanel extends Component {
 			label={child.props.label}
 			route={this.route(child) + this.getFirstChildRoute(child)}
 			onClick={this.setActiveMenu}
-			arrow={this.props.Arrows} />
+			arrow={this.props.arrows} />
 	}
 
 	renderRoutes = (children) => {
@@ -109,7 +110,7 @@ class MenuPanel extends Component {
 				if (this.props.isLoggedIn !== false) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
-						if (child.type === Menu || child.type === Page) {	
+						if (child.type === Menu || child.type === Page) {
 							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i + proti)} />
 						}
 						else return null
@@ -122,7 +123,6 @@ class MenuPanel extends Component {
 			}
 		})
 	}
-
 	renderBottomItems = (children) => {
 		var BottomItems = []
 		children.forEach((child, index) => {
@@ -130,11 +130,10 @@ class MenuPanel extends Component {
 				if (this.props.isLoggedIn !== false) {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
-						if (protchild.props.bottom && !protchild.props.top)
-						{
+						if (protchild.props.bottom && !protchild.props.top) {
 							if (protchild.type !== Menu && protchild !== Page)
 								BottomItems.push(protchild)
-							else 
+							else
 								BottomItems.push(this.renderMenuItem(protchild, index + protindex))
 						}
 					})
@@ -144,9 +143,9 @@ class MenuPanel extends Component {
 				if (child.props.bottom && !child.props.top)
 					if (child.type !== Menu && child.type !== Page)
 						BottomItems.push(child)
-					else 
+					else
 						BottomItems.push(this.renderMenuItem(child, index))
-					
+
 			}
 		})
 		return BottomItems
@@ -162,7 +161,7 @@ class MenuPanel extends Component {
 						if (!protchild.props.bottom && protchild.props.top)
 							if (protchild.type !== Menu && protchild !== Page)
 								TopItems.push(protchild)
-							else 
+							else
 								TopItems.push(this.renderMenuItem(protchild, index + protindex))
 
 					})
@@ -181,6 +180,7 @@ class MenuPanel extends Component {
 	}
 
 	renderMenuItems = (children) => {
+		// console.log(children)
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn === false) {
@@ -216,10 +216,13 @@ class MenuPanel extends Component {
 					bottom={this.renderBottomItems(children)}>
 					{/* {this.renderTopMenuItems(children)} */}
 					{this.renderMenuItems(children)}
-				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
+				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} />}
 			<Switch>
 				{this.renderRoutes(children)}
-				<Route path={'*'} render={this.props.isLoggedIn ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />} />
+				<Route path={'*'}
+					render={this.props.login === true ?
+						(this.props.isLoggedIn === true ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />)
+						: () => <NotFound />} />
 			</Switch>
 		</React.Fragment>
 	}
@@ -230,5 +233,7 @@ class MenuPanel extends Component {
 
 	//#endregion
 }
-
+MenuPanel.defaultProps = {
+	login: false
+}
 export default MenuPanel

@@ -18,7 +18,7 @@ export const StyledFooter = styled.div`
 	-webkit-box-shadow: 0 0 3px 0 #ccc;
 	-moz-box-shadow: 0 0 3px 0 #ccc;
 	box-shadow: 0 0 3px 0 #ccc;
-	color: #5e5e5e;
+	color: ${p => p.theme.footer ? p.theme.footer.color : '#5e5e5e'};
 	font-size: 13px;
 	font-weight: 300;
 	text-align: center;
@@ -39,5 +39,5 @@ export const Link = styled.a`
 	text-decoration: none;
 	align-items: center;
 	justify-content: center;
-	color: black;
+	color: inherit;
 `

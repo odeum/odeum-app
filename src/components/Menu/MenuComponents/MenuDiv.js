@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { MenuDiv as MenuCont, MenuHeader, IconDiv, MenuFooter, DefaultHeader } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
 
-class MenuDiv extends Component {
+class MenuDiv extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.state = {

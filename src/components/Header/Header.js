@@ -11,26 +11,22 @@ class Header extends Component {
 		super(props)
 
 		this.state = {
-			quicknav: false,
-			logo: this.props.logo
+			quicknav: false
 		}
 	}
-
+	shouldComponentUpdate = (nextProps) => {
+		if (nextProps.logo.default !== this.props.logo.default) {
+			return true
+		}
+		else
+			return false
+	}
 	quickNav = () => {
 		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
-		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
-	}
-	changeLogo = (logo) => {
-		this.setState({ logo: logo.default })
 	}
 	componentWillMount = () => {
 		this.quickNav()
 		window.addEventListener('resize', this.quickNav)
-	}
-	componentWillUpdate = (nextProps, nextState) => {
-		var nextLogo = nextProps.logo.default
-		if (nextLogo !== undefined && this.state.logo !== nextLogo)
-			this.quickNav(nextProps.logo)
 	}
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.quickNav)
@@ -45,7 +41,7 @@ class Header extends Component {
 
 	renderLogo = () => (
 		<LogoDiv to={'/'}>
-			<LogoImg src={this.state.logo} />
+			<LogoImg src={this.props.logo.default} />
 		</LogoDiv>)
 
 

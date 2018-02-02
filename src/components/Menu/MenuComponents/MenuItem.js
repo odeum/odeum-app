@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { IconDiv, ArrowIconDiv, Link, MenuText } from '../MenuStyles'
 import PropTypes from 'prop-types'
 import { Icon } from 'odeum-ui'
 import { SetHelpID } from '../../utils/HelpReducer'
 
-class MenuItem extends Component {
+class MenuItem extends PureComponent {
 
 	cutRoutes = (string) => {
 		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)

@@ -20,7 +20,7 @@ export const Bold = styled.b`
 	margin-left: 4px;
 `
 
-export const HelpIcon = styled(Icon)`
+export const HelpIcon = styled(Icon) `
 	&:hover{
 		background: ${props => props.theme.tab.hover};
 		color: white;

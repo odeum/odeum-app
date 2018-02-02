@@ -1,11 +1,16 @@
+/* IE Compatibility */
+
 import 'core-js/es6/map'
 import 'core-js/es6/set'
 import 'core-js/fn/string/includes'
+
+/* End IE Compatibility */
+
 import React, { Component } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { AppDiv } from './AppStyles'
 import { ThemeProvider } from 'styled-components'
 import theme from '../../theme/default'
-import { BrowserRouter as Router } from 'react-router-dom'
 
 class AppContainer extends Component {
 

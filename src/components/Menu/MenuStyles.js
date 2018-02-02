@@ -7,7 +7,6 @@ export const MenuDiv = styled.div`
 	background-color: ${props => props.theme.menu.background};
 	display:flex;
 	flex-flow:column wrap;
-	overflow-x: hidden;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
 
