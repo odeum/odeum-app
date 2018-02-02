@@ -1,4 +1,4 @@
-import ODEUM_Logo from 'theme/logo.svg'
+import ODEUM_Logo from './logo.svg'
 
 const theme = {
 	app: {
