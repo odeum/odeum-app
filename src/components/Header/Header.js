@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { HeaderDiv } from './HeaderStyles'
+import { HeaderContainer } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from '../../theme/media'
 import theme from '../../theme/default'
@@ -11,25 +11,26 @@ class Header extends Component {
 		super(props)
 
 		this.state = {
-			quicknav: false
+			SmallScreen: false
 		}
 	}
-	shouldComponentUpdate = (nextProps) => {
-		if (nextProps.logo.default !== this.props.logo.default) {
+	shouldComponentUpdate = (nextProps, nextState) => {
+		if ((nextProps.logo.default !== this.props.logo.default) ||
+			(this.state.SmallScreen !== nextState.SmallScreen)) {
 			return true
 		}
 		else
 			return false
 	}
-	quickNav = () => {
-		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
+	OnSmallScreen = () => {
+		this.setState({ SmallScreen: window.innerWidth < ScreenSizes.tablet ? true : false })
 	}
 	componentWillMount = () => {
-		this.quickNav()
-		window.addEventListener('resize', this.quickNav)
+		this.OnSmallScreen()
+		window.addEventListener('resize', this.OnSmallScreen)
 	}
 	componentWillUnmount = () => {
-		window.removeEventListener('resize', this.quickNav)
+		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 	renderNotification = () => (
 		<div>NotiF</div>
@@ -50,12 +51,12 @@ class Header extends Component {
 	}
 
 	render() {
-		const { render, search, notification, avatar } = this.props
-		// const { logo } = this.state
+		const { render, search, notification, avatar, children } = this.props
+		const { SmallScreen } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
-			<HeaderDiv quicknav={this.state.quicknav}>
-				{this.props.children ? this.props.children : <React.Fragment>
+			<HeaderContainer SmallScreen={SmallScreen}>
+				{children ? children : <React.Fragment>
 					{renderLogo()}
 					{render && render()}
 					{search && renderSearchBar()}
@@ -63,7 +64,7 @@ class Header extends Component {
 					{notification && renderNotification()}
 				</React.Fragment>
 				}
-			</HeaderDiv>
+			</HeaderContainer>
 		)
 	}
 }

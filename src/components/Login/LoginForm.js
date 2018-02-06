@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, LoginDiv, Button } from './LoginStyles'
+import { Input, LoginContainer, Button } from './LoginStyles'
 
 export default class LoginForm extends Component {
 	constructor(props) {
@@ -11,18 +11,20 @@ export default class LoginForm extends Component {
 	  }
 	}
 	handleChange = (e) => {
+		// console.log(e.target.name, e.target.value)
 		this.setState({ [e.target.name]: e.target.value })
 	}
 	submit = () => {
 		this.props.login(this.state.username, this.state.password)
 	}
 	render() {
+		// const { login } = this.props
 		return (
-			<LoginDiv>
+			<LoginContainer>
 				<Input name={'username'} onChange={this.handleChange} placeholder={'user'} style={{ marginBottom: '5px' }}/>
 				<Input name={'password'} onChange={this.handleChange} placeholder={'password'} type={'password'} style={{ marginBottom: '5px' }}/>
 				<Button hasText={true} color={'blue'} onClick={this.submit}>Log me in</Button>
-			</LoginDiv>
+			</LoginContainer>
 
 		)
 	}

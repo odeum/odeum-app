@@ -41,7 +41,6 @@ export const Link = styled(NavLink) `
 
 export const MenuItem = styled.div`
     background:${(props) => props.index === props.activeMenu ? props.theme.quicknav.menu.color : props.theme.quicknav.menu.unselected};
-    /* if Active, change background */
     color: ${props => props.index === props.activeMenu ? props.theme.quicknav.menu.unselected : props.theme.quicknav.menu.color};
     height:50px;
     display: flex;
@@ -56,7 +55,6 @@ export const MenuItem = styled.div`
         margin-left:1px;
     }
 	&:hover{
-		/* background: rgba(59,151,211,0.8); */
 		border: 10px;
 		border-color: rgba(59,151,211,0.3);
 		box-shadow: 0 0 0 3px rgba(59,151,211,0.3);
@@ -93,9 +91,6 @@ export const TabItem = styled(NavLink) `
     padding:0px 15px;
     height: 20px;
     color:${props => props.activetab === 'true' ? props.theme.quicknav.tab.selected : props.theme.quicknav.tab.unselected};
-    /* &:hover{
-        color: royalblue;
-    } */
     cursor:pointer;
     display: flex;
     align-items:center;
@@ -108,9 +103,6 @@ export const TabList = styled.div`
 	grid-auto-columns: auto;
 	align-content: center;
 	grid-auto-flow: column;
-    /* flex-flow: column wrap;
-    align-items:center;
-    justify-content:center; */
     height: 25px;
     max-height:50px;
     margin: 0;
@@ -121,7 +113,6 @@ export const TabList = styled.div`
     width:90vw;
 	white-space: nowrap;
 	overflow-y:hidden;
-
 `
 
 //#endregion
@@ -151,7 +142,7 @@ export const QuickNavButton = styled.div`
     align-self:center;
     cursor: pointer;
     &:hover{
-        background: ${props => props.theme.tab.hover}
+        background: ${props => props.theme.tab.hover};
     }
 	display: flex;
 	align-items: center;
@@ -166,7 +157,7 @@ export const QuickNavButtonHidden = styled.div`
     align-self:center;
     cursor: pointer;
     &:hover{
-        background: ${props => props.theme.tab.hover}
+        background: ${props => props.theme.tab.hover};
 }
 display: flex;
 align-items: center;

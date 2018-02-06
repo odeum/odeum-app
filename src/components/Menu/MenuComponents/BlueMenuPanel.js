@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
-import { MenuDiv as MenuCont, MenuHeader, IconDiv, MenuFooter, DefaultHeader } from '../MenuStyles'
+import { BlueMenuContainer, MenuHeader, IconDiv, MenuFooter, DefaultHeader } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
 
-class MenuDiv extends PureComponent {
+class BlueMenuPanel extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -15,9 +15,11 @@ class MenuDiv extends PureComponent {
 	)
 
 	render() {
+		const CustomHeaderComponents = this.props.top
+		const CustomFooterComponents = this.props.bottom
 		return (
-			<MenuCont achordeon={this.state.achordeon}>
-				{this.props.top.length === 0 ? <DefaultHeader>
+			<BlueMenuContainer achordeon={this.state.achordeon}>
+				{CustomHeaderComponents.length === 0 ? <DefaultHeader>
 					<IconDiv onClick={this.switch}
 						style={{ cursor: 'pointer', alignSelf: 'left' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
@@ -27,12 +29,12 @@ class MenuDiv extends PureComponent {
 				
 				{this.props.children}
 				<MenuFooter>
-					{this.props.bottom ? this.props.bottom : null}
+					{CustomFooterComponents ? CustomFooterComponents : null}
 				</MenuFooter>
-			</MenuCont>
+			</BlueMenuContainer>
 		)
 	}
 }
 
 
-export default MenuDiv
+export default BlueMenuPanel

@@ -12,7 +12,7 @@ class Menu extends Component {
 		super(props)
 
 		this.state = {
-			activeTab: -1
+			// activeTab: -1
 		}
 	}
 
@@ -51,11 +51,12 @@ class Menu extends Component {
 
 	//#endregion
 
-	setActiveTab = (key) => {
-		this.setState({ activeTab: key })
-		if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
-			this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
-	}
+	// setActiveTab = (key) => {
+	// 	console.log('setActiveTab', key)
+	// 	this.setState({ activeTab: key })
+	// 	if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
+	// 		this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
+	// }
 
 	renderTabs = (children) => {
 		if (children[0].type === Tab)
@@ -70,8 +71,9 @@ class Menu extends Component {
 								label={child.props.label}
 								icon={child.props.icon}
 								route={this.route() + this.childRoute(child)}
-								setActiveTab={this.setActiveTab}
-								activeTab={this.state.activeTab} />
+							// setActiveTab={this.setActiveTab}
+							// activeTab={this.state.activeTab} 
+							/>
 						))}
 					</TabList> : null}
 					<Switch>

@@ -45,8 +45,8 @@ const theme = {
 		unselected: '#E3E5E5'
 	},
 	icon: {
-		default: '#34495D', //not used
-		selected: '#FFF' //not used
+		default: '#34495D', 
+		selected: '#FFF' 
 	},
 	quicknav: {
 		button: {

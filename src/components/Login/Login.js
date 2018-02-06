@@ -3,14 +3,14 @@ import Menu from '../Menu/Menu'
 import { Redirect } from 'react-router-dom'
 import LoginForm from './LoginForm'
 
-const Login = ( isLoggedIn, login, routeToLogin, label, redirectTo ) => {
+const loginForm = ( isLoggedIn, login, routeToLogin, label, redirectTo ) => {
 	return (
 		isLoggedIn ? <Menu route={routeToLogin ? routeToLogin : '/login'}><Redirect to={redirectTo ? redirectTo : '/' }/></Menu> : <Menu route={routeToLogin ? routeToLogin : '/login'} label={label ? label : 'Login'}>
 			<LoginForm login={login}/>
 		</Menu>
 	)
 }
-export const LoginWithComponent = (isLoggedIn, Component, routeToLogin, label, redirectTo) => { 
+export const loginCustomForm = (isLoggedIn, Component, routeToLogin, label, redirectTo) => { 
 	return (
 		isLoggedIn ? <Menu route={routeToLogin ? routeToLogin : '/login'}><Redirect to={redirectTo ? redirectTo : '/'} /></Menu> 
 			: <Menu route={routeToLogin ? routeToLogin : '/login'} label={label ? label : 'Login'}>
@@ -19,4 +19,4 @@ export const LoginWithComponent = (isLoggedIn, Component, routeToLogin, label, r
 	)
 
 }
-export default Login
+export default loginForm

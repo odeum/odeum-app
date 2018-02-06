@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { transparentize, darken, rgba } from 'polished'
 
-export const LoginDiv = styled.div`
+export const LoginContainer = styled.div`
 	width: 100%;
 	display: flex;
 	flex-flow: column;	
@@ -17,10 +17,8 @@ export const Button = styled.button`
 	color: ${(p) => p.theme.button.color ? p.theme.button.color : '#000'};
 	background: ${(props) => props.isDisabled ? props.disabledColor : props.theme.button.background};
 	padding: 0px;
-	/* padding: ${(props) => props.hasIconText ? '0 13px 0 15px' : props.hasText ? '0 8px 0 15px' : props.hasIcon ? '0 10px' : '0 0 0 15px'}; */
 	padding: ${(p) => p.theme.button.padding ? p.theme.button.padding : '0px 15px'};
 	height: ${(props) => props.theme.button ? props.theme.button.height : '35px'};
-	/* margin: 0.3rem 0.7rem 0.7rem 0; */
 	border: none;
     text-decoration: none;
 	cursor: ${(props) => props.isDisabled ? 'not-allowed' : 'pointer'};
@@ -32,7 +30,7 @@ export const Button = styled.button`
 		box-shadow: ${(props) => props.isDisabled ? null : `0 0 0 3px ${transparentize(0.7, props.theme.button.background)}`};
     }
 
-    &&:active {
+    &:active {
         background: ${(props) => props.isDisabled ? props.disabledColor : darken(0.1, props.theme.button.background)};
         border-color: ${(props) => props.isDisabled ? props.disabledColor : darken(0.1, props.theme.button.background)};
 		box-shadow: ${(props) => props.isDisabled ? null : `inset 0 1px 2px ${transparentize(0.7, rgba(0, 0, 0, 0.1))}`}; 

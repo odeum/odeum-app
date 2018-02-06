@@ -2,19 +2,18 @@ import styled from 'styled-components'
 import { NavLink as RouterLink } from 'react-router-dom'
 import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
-export const MenuDiv = styled.div`
+export const BlueMenuContainer = styled.div`
+	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
+	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
+	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none'}};
+	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'menupanel'); return y > 1 ? y : 'none'}};
+
 	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
 	display:flex;
 	flex-flow:column wrap;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
-
-	/*IE11 Support*/
-	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
-	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
-	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none'}};
-	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'menupanel'); return y > 1 ? y : 'none'}};
 `
 
 const BaseItem = styled.div`
@@ -39,7 +38,7 @@ export const MenuHeader = BaseItem.extend`
 	height: auto;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: auto; 
+	margin-bottom: auto;
 `
 
 export const MenuFooter = BaseItem.extend`

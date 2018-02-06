@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
-import MenuDiv from "./MenuComponents/MenuDiv"
+import BlueMenuPanel from "./MenuComponents/BlueMenuPanel"
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
-import { ScreenSizes as sizes } from '../../theme/media'
+import { ScreenSizes } from '../../theme/media'
 import Tab from '../Tabs/Tab'
 import { Redirect } from 'react-router-dom'
 import Protected from '../Login/Protected'
@@ -18,32 +18,25 @@ class MenuPanel extends Component {
 		super(props)
 
 		this.state = {
-			quicknav: false,
+			SmallScreen: false,
 			disableMenuAchordeon: false,
 			activeMenu: 0
 		}
 	}
 	componentWillMount = () => {
-		this.updateWindowSize()
-		window.addEventListener('resize', this.updateWindowSize)
+		this.OnSmallScreen()
+		window.addEventListener('resize', this.OnSmallScreen)
 	}
 
 	componentWillUnmount = () => {
-		window.removeEventListener('resize', this.updateWindowSize)
+		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 
 	//#region Display quickNav or Menu 
 
-	updateWindowSize = () => {
-		if (window.innerWidth < sizes.tablet)
-			//QuickNav on
-			this.setState({
-				quicknav: true
-			})
-		if (window.innerWidth >= sizes.tablet)
-			this.setState({
-				quicknav: false
-			})
+	OnSmallScreen = () => {
+		this.setState({ SmallScreen: window.innerWidth < ScreenSizes.tablet ? true : false })
+
 
 	}
 	//#endregion 
@@ -208,15 +201,16 @@ class MenuPanel extends Component {
 	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
 
 	renderMenu = (children) => {
+		const { SmallScreen } = this.state
 		return <React.Fragment>
-			{!this.state.quicknav ?
-				<MenuDiv
-					quicknav={this.switch}
+			{!SmallScreen ?
+				<BlueMenuPanel
+					SmallScreen={this.switch}
 					top={this.renderTopItems(children)}
 					bottom={this.renderBottomItems(children)}>
 					{/* {this.renderTopMenuItems(children)} */}
 					{this.renderMenuItems(children)}
-				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} />}
+				</BlueMenuPanel> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} />}
 			<Switch>
 				{this.renderRoutes(children)}
 				<Route path={'*'}

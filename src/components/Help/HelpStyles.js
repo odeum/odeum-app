@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import media from '../../theme/media'
-// import theme from '../../theme/default'
+import media from 'theme/media'
+// import theme from 'theme/default'
 import { Icon } from 'odeum-ui'
 
 export const HelpPopUp = styled.div`

@@ -4,9 +4,9 @@ class Protected extends PureComponent {
 
 	render() {
 		return (
-			<div>
+			<React.Fragment>
 				{this.props.children}
-			</div>
+			</React.Fragment>
 		)
 	}
 }

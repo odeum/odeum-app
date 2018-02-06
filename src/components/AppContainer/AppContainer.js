@@ -8,19 +8,26 @@ import 'core-js/fn/string/includes'
 
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { AppDiv } from './AppStyles'
+
+// Styling
+import { RootContainer } from './AppStyles'
 import { ThemeProvider } from 'styled-components'
-import theme from '../../theme/default'
+
+//Sort of fallback / if theme is missing
+
+import DefaultTheme from '../../theme/default'
 
 class AppContainer extends Component {
 
 	render() {
+		let CustomTheme = this.props.theme
+		let CustomStyles = this.props.style
 		return (
 			<Router>
-				<ThemeProvider theme={this.props.theme ? this.props.theme : theme} >
-					<AppDiv style={this.props.style ? this.props.style : undefined}>
+				<ThemeProvider theme={CustomTheme ? CustomTheme : DefaultTheme} >
+					<RootContainer style={CustomStyles ? CustomStyles : undefined}>
 						{this.props.children}
-					</AppDiv>
+					</RootContainer>
 				</ThemeProvider>
 			</Router>
 		)

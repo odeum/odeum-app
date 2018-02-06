@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TabIconDiv, Link, TabText } from './TabStyles'
 import { Icon } from 'odeum-ui'
-import theme from '../../theme/default'
-
+import { withTheme } from 'styled-components'
 
 class Tab extends Component {
 	constructor(props) {
@@ -14,16 +13,11 @@ class Tab extends Component {
 		}
 	}
 
-	componentWillMount() {
-		this.setActive()
-	}
-
 	componentDidMount = () => {
-		if (this.state.active)
-			this.activate()
+		this.setTabActive()
 	}
 
-	setActive = () => {
+	setTabActive = () => {
 		if (!this.props.exact) {
 			if (window.location.pathname.includes(this.props.route) && !this.state.active) {
 				this.setState({ active: true })
@@ -35,20 +29,18 @@ class Tab extends Component {
 			}
 		}
 	}
-	//Refactor to shouldComponentUpdate
-	activate = () => {
-		if (this.props.activeTab !== this.props.tabID)
-			this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
-	}
 
-	iconIsActive = () => this.state.active ? theme.icon.selected : theme.icon.default
+	iconIsActive = () => this.state.active ? this.props.theme.icon.selected :  this.props.theme.icon.default
 
 	render() {
+		const { route, icon, label } = this.props
+		const { active } = this.state
+		const { setTabActive, defaultProps, iconIsActive } = this
 		return (
-			<Link to={this.props.route} activetab={this.state.active.toString()} onClick={this.activate}>
-				<TabIconDiv><Icon color={this.iconIsActive()} iconSize={20} icon={this.props.icon ? this.props.icon : this.defaultProps.icon} /></TabIconDiv>
+			<Link to={route} activetab={active.toString()} onClick={setTabActive}>
+				<TabIconDiv><Icon active={active} color={iconIsActive()} iconSize={20} icon={icon ? icon : defaultProps.icon} /></TabIconDiv>
 				<TabText>
-					{this.props.label}
+					{label}
 				</TabText>
 			</Link>
 		)
@@ -61,9 +53,9 @@ Tab.propTypes = {
 	icon: PropTypes.string
 }
 
+
 Tab.defaultProps = {
 	label: 'Tab',
 	icon: 'tab'
 }
-export default Tab
-
+export default withTheme(Tab)

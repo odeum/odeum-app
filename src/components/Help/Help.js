@@ -14,6 +14,7 @@ class Help extends Component {
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
+
 	renderHelp = () => {
 		var helpID = GetHelpID()
 		return <HelpPopUp innerRef={this.setHelpPopUpRef}>
@@ -23,17 +24,16 @@ class Help extends Component {
 			<p>Description</p>
 		</HelpPopUp>
 	}
-
-	onClickOutsise = (e) => {
+	onClickOutside = (e) => {
 		if (this.state.openHelp) {
 			if (!this.node.contains(e.target)) {
 				this.setState({ openHelp: false })
-				document.removeEventListener('click', this.onClickOutsise, false)
+				document.removeEventListener('click', this.onClickOutside, false)
 			}
 		}
 	}
 	openHelp = () => {
-		document.addEventListener('click', this.onClickOutsise, false)
+		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
 	}
 	render() {
