@@ -1,7 +1,7 @@
 import React from 'react'
 import Menu from '../Menu/Menu'
 import { Redirect } from 'react-router-dom'
-import LoginDefaultForm from './LoginForm'
+import LoginDefaultForm from './LoginDefaultForm'
 
 
 const LoginForm = ( isLoggedIn, login, routeToLogin, label, redirectTo ) => {

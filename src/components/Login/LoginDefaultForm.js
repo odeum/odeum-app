@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input, LoginContainer, Button } from './LoginStyles'
 
-export default class LoginForm extends Component {
+export default class LoginDefaultForm extends Component {
 	constructor(props) {
 	  super(props)
 	
