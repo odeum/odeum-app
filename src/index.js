@@ -6,7 +6,7 @@ import MenuPanel from './components/Menu/MenuPanel'
 import Tab from './components/Tabs/Tab'
 import Workspace from './components/Workspace/Workspace'
 import Protected from './components/Login/Protected'
-import Login, { LoginWithComponent } from './components/Login/Login'
+import LoginForm, { LoginCustomForm } from './components/Login/Login'
 
 export {
 	AppContainer,	
@@ -17,8 +17,8 @@ export {
 	Tab,
 	Workspace,
 	Protected,
-	Login,
-	LoginWithComponent
+	LoginForm,
+	LoginCustomForm
 }
 
 /* 
