@@ -1,6 +1,6 @@
 {
 	"name": "odeum-app",
-	"version": "0.2.7",
+	"version": "0.2.72",
 	"description": "ODEUM Code Web App foundation modules",
 	"main": "lib/index.js",
 	"author": "Christian Broberg",
