@@ -14,12 +14,12 @@ const theme = {
 	header: {
 		height: '80px',
 		background: '#2C3E50',
-		color: '#FFF'
+		color: '#FFFFFF'
 	},
 
 	menu: {
 		background: '#3B97D3',
-		color: '#FFF',
+		color: '#FFFFFF',
 		selected: '#216795',
 		hover: '#81C1EA',
 		border: '1px solid #3087bf',
@@ -45,8 +45,8 @@ const theme = {
 		unselected: '#E3E5E5'
 	},
 	icon: {
-		default: '#34495D', 
-		selected: '#FFF' 
+		default: '#34495D',
+		selected: '#FFF'
 	},
 	quicknav: {
 		button: {
@@ -76,9 +76,11 @@ const theme = {
 		borderRadius: '4px'
 	},
 	button: {
-		background: '#216795',
-		color: 'white',
-		height: '30px'
+		background: '#3B97D3',
+		selected: '#216795',
+		color: '#FFFFFF',
+		height: '30px',
+		hover: '#81C1EA'
 	}
 }
 

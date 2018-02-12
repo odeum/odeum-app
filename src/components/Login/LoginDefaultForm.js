@@ -4,7 +4,7 @@ import { Input, LoginContainer, Button } from './LoginStyles'
 export default class LoginDefaultForm extends Component {
 	constructor(props) {
 	  super(props)
-	
+
 	  this.state = {
 		 username: '',
 		 password: ''
