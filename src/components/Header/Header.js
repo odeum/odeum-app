@@ -14,6 +14,7 @@ class Header extends Component {
 			SmallScreen: false
 		}
 	}
+
 	shouldComponentUpdate = (nextProps, nextState) => {
 		if ((nextProps.logo.default !== this.props.logo.default) ||
 			(this.state.SmallScreen !== nextState.SmallScreen)) {
@@ -22,16 +23,26 @@ class Header extends Component {
 		else
 			return false
 	}
+
 	OnSmallScreen = () => {
-		this.setState({ SmallScreen: window.innerWidth < ScreenSizes.tablet ? true : false })
+		if (window.innerWidth < ScreenSizes.tablet) {
+			this.setState({ SmallScreen: true })
+		}
+		else {
+			if (window.innerWidth >= ScreenSizes.tablet && this.state.SmallScreen === true)
+				this.setState({ SmallScreen: false })
+		}
 	}
+
 	componentWillMount = () => {
 		this.OnSmallScreen()
 		window.addEventListener('resize', this.OnSmallScreen)
 	}
+
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.OnSmallScreen)
 	}
+
 	renderNotification = () => (
 		<div>NotiF</div>
 	)

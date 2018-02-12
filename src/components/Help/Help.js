@@ -4,6 +4,7 @@ import { HelpDiv, Bold, HelpIcon, HelpButton, HelpPopUp } from './HelpStyles'
 import { GetHelpID } from '../utils/HelpReducer'
 
 class Help extends Component {
+
 	constructor(props) {
 		super(props)
 
@@ -11,6 +12,7 @@ class Help extends Component {
 			openHelp: false
 		}
 	}
+
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
@@ -24,6 +26,7 @@ class Help extends Component {
 			<p>Description</p>
 		</HelpPopUp>
 	}
+
 	onClickOutside = (e) => {
 		if (this.state.openHelp) {
 			if (!this.node.contains(e.target)) {
@@ -32,10 +35,12 @@ class Help extends Component {
 			}
 		}
 	}
+
 	openHelp = () => {
 		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
 	}
+
 	render() {
 		return (
 			<HelpDiv small={this.props.small}>

@@ -23,10 +23,9 @@ class BlueMenuPanel extends PureComponent {
 					<IconDiv onClick={this.switch}
 						style={{ cursor: 'pointer', alignSelf: 'left' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
-					</IconDiv> 
+					</IconDiv>
 				</DefaultHeader>
 					: <MenuHeader>{this.props.top}</MenuHeader>}
-				
 				{this.props.children}
 				<MenuFooter>
 					{CustomFooterComponents ? CustomFooterComponents : null}

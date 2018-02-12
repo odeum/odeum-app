@@ -23,7 +23,13 @@ class Footer extends PureComponent {
 	}
 
 	OnSmallScreen = () => {
-		this.setState({ SmallScreen: window.innerWidth < ScreenSizes.tablet ? true : false })
+		if (window.innerWidth < ScreenSizes.tablet) {
+			this.setState({ SmallScreen: true })
+		}
+		else {
+			if (window.innerWidth >= ScreenSizes.tablet && this.state.SmallScreen === true)
+				this.setState({ SmallScreen: false })
+		}
 	}
 
 	render() {
