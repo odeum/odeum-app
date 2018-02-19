@@ -124,10 +124,10 @@ export const QuickNav = styled.div`
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	z-index: 1; 
-	display: flex; 
+	z-index: 1;
+	display: flex;
 	flex-flow: row nowrap;
-	align-items: center; 
+	align-items: center;
 	justify-content: center;
 `
 
@@ -171,11 +171,12 @@ export const QuickNavMenu = styled.div`
     align-items:center;
     flex-flow:column wrap;
     background:white;
-    height:100%;
+    height:${p => p.quickNav ? '100%' : '0%'};
     max-height: 210px;
     border-radius: 5px;
     border: 1px solid #cbc8c8;
-    padding: 5px;
+    padding:${p => p.quickNav ? '5px' : '0px'};
+    transition: 100ms all ease;
 `
 export const QuickNavContainer = styled.div`
     display:flex;
@@ -184,7 +185,8 @@ export const QuickNavContainer = styled.div`
     flex-flow: column nowrap;
     color:black;
     width: 100vw;
-    height: ${props => props.quickNav ? '100vh' : '0px'};
+    height: ${props => props.quickNav && !props.helpOpen ? '100vh' :
+		props.helpOpen && !props.quickNav ? '100vh' : '0px'};
     overflow: hidden;
     position:fixed;
     z-index:2;

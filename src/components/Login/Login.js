@@ -16,7 +16,7 @@ export const LoginCustomForm = (isLoggedIn, Component, routeToLogin, label, redi
 		isLoggedIn ? <Menu route={routeToLogin ? routeToLogin : '/login'} icon={'lock_outline'}><Redirect to={redirectTo ? redirectTo : '/'} /></Menu> 
 			: <Menu route={routeToLogin ? routeToLogin : '/login'} label={label ? label : 'Login'} icon={'lock_outline'}>
 				<Component/>
-			</Menu> 
+			</Menu>
 	)
 
 }

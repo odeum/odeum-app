@@ -4,7 +4,7 @@ import { transparentize, darken, rgba } from 'polished'
 export const LoginContainer = styled.div`
 	width: 100%;
 	display: flex;
-	flex-flow: column;	
+	flex-flow: column;
 	align-items: center;
     justify-content: center;
 `
@@ -44,7 +44,7 @@ export const Button = styled.button`
     }
 `
 
-export const Input = styled.input`    
+export const Input = styled.input`
 	font-size: 16px;
 	font-weight: 200;
     padding: 1rem;
@@ -55,7 +55,7 @@ export const Input = styled.input`
     box-sizing: border-box;
 	outline: none;
 
-    &:hover {		
+    &:hover {
         border-color: ${transparentize(0.7, '#3B97D3')};		 
 		box-shadow: ${`0 0 0 3px ${transparentize(0.7, '#3B97D3')}`};
 		cursor: ${(props) => props.isDisabled ? 'not-allowed' : 'pointer'};

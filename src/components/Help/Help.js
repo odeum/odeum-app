@@ -1,38 +1,47 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { HelpDiv, Bold, HelpIcon, HelpButton, HelpPopUp } from './HelpStyles'
+import { HelpDiv, Bold, HelpIcon, HelpButton } from './HelpStyles'
 import { GetHelpID } from '../utils/HelpReducer'
+import HelpPopup from './HelpPopUp'
+import { GetHelpItem } from './HelpData'
 
 class Help extends Component {
-
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			openHelp: false
+			openHelp: false,
+			helpObj: null
 		}
 	}
-
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
+	getHelpItem = async (helpID) => {
+		var data = await GetHelpItem(helpID) // async/await the stuff / or make a Promise
+		return data
+	}
 
-	renderHelp = () => {
-		var helpID = GetHelpID()
-		return <HelpPopUp innerRef={this.setHelpPopUpRef}>
-			<h1>
-				{helpID}
-			</h1>
-			<p>Description</p>
-		</HelpPopUp>
+
+	getHelpData = (helpID) => {
+		// api.get('/photos/8')
+		// 	.then((response) => {
+		// 		this.setState({ helpObj: response.data })
+		// 	})
+	}
+
+	componentWillMount = async () => { //Delete when the API is implemented, only used to used a prepared object to test.
+		var data = await this.getHelpItem(GetHelpID())
+		this.setState({ helpObj: data })
 	}
 
 	onClickOutside = (e) => {
 		if (this.state.openHelp) {
-			if (!this.node.contains(e.target)) {
-				this.setState({ openHelp: false })
-				document.removeEventListener('click', this.onClickOutside, false)
-			}
+			if (this.node !== null && this.node !== undefined)
+				if (!this.node.contains(e.target)) {
+					this.setState({ openHelp: false })
+					document.removeEventListener('click', this.onClickOutside, false)
+				}
 		}
 	}
 
@@ -40,18 +49,33 @@ class Help extends Component {
 		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
 	}
+	//#region Rendering
+	renderHelp = () => {
 
+		return <HelpPopup
+			small={this.props.small}
+			helpID={GetHelpID()}
+			innerRef={this.setHelpPopUpRef}
+			helpObj={this.state.helpObj}
+			openHelp={this.props.showHelp ? this.props.showHelp : this.state.openHelp}>
+		</HelpPopup>
+
+	}
 	render() {
+		const { small } = this.props
 		return (
-			<HelpDiv small={this.props.small}>
-				<HelpButton onClick={this.openHelp}>
-					<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
-					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
-				</HelpButton>
-				{this.state.openHelp && this.renderHelp()}
-			</HelpDiv>
+			small ? <React.Fragment>{this.renderHelp()}</React.Fragment>
+				:
+				<HelpDiv>
+					<HelpButton onClick={this.openHelp}>
+						<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
+						{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
+					</HelpButton>
+					{this.renderHelp()}
+				</HelpDiv>
 		)
 	}
+	//#endregion
 }
 
 Help.propTypes = {
