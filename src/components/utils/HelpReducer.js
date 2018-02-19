@@ -48,6 +48,6 @@ export const SetAppID = (id) => {
 	store.dispatch(setApp(id))
 }
 
-export const GetAppID = (id) => {
+export const GetAppID = () => {
 	return store.getState().app_id
 }
