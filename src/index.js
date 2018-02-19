@@ -7,9 +7,10 @@ import Tab from './components/Tabs/Tab'
 import Workspace from './components/Workspace/Workspace'
 import Protected from './components/Login/Protected'
 import LoginForm, { LoginCustomForm } from './components/Login/Login'
+import { GetHelpID, SetHelpID, GetAppID, SetAppID } from './components/utils/HelpReducer'
 
 export {
-	AppContainer,	
+	AppContainer,
 	Footer,
 	Header,
 	Menu,
@@ -18,7 +19,11 @@ export {
 	Workspace,
 	Protected,
 	LoginForm,
-	LoginCustomForm
+	LoginCustomForm,
+	GetAppID,
+	SetAppID,
+	GetHelpID,
+	SetHelpID
 }
 
 /* 
