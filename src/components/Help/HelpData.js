@@ -5,7 +5,7 @@ const api = create({
 })
 
 
-export const GetHelpItem = async (helpID) => {
+export const GetHelpItem = /* async */ (helpID) => {
 	// var data = await api.get('/photos/8')
 	// 	.then((response) => {
 	// 		if (response.ok)
