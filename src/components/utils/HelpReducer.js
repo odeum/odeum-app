@@ -14,7 +14,7 @@ const setApp = (appID) => ({
 })
 
 const initialState = {
-	app_id: '',
+	appID: '',
 	helpID: 0
 }
 const HelpReducer = (state = initialState, action) => {
@@ -49,5 +49,5 @@ export const SetAppID = (id) => {
 }
 
 export const GetAppID = () => {
-	return store.getState().app_id
+	return store.getState().appID
 }
