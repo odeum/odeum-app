@@ -120,7 +120,6 @@ export const TabList = styled.div`
 //#region QuickNav Button, Overlay and Spacer
 
 export const QuickNav = styled.div`
-    background:red;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -171,11 +170,11 @@ export const QuickNavMenu = styled.div`
     align-items:center;
     flex-flow:column wrap;
     background:white;
-    height:${p => p.quickNav ? '100%' : '0%'};
+    height:${p => p.SmallScreen ? '100%' : '0%'};
     max-height: 210px;
     border-radius: 5px;
     border: 1px solid #cbc8c8;
-    padding:${p => p.quickNav ? '5px' : '0px'};
+    padding:${p => p.SmallScreen ? '5px' : '0px'};
     transition: 100ms all ease;
 `
 export const QuickNavContainer = styled.div`
@@ -185,8 +184,8 @@ export const QuickNavContainer = styled.div`
     flex-flow: column nowrap;
     color:black;
     width: 100vw;
-    height: ${props => props.quickNav && !props.helpOpen ? '100vh' :
-		props.helpOpen && !props.quickNav ? '100vh' : '0px'};
+    height: ${props => props.SmallScreen && !props.helpOpen ? '100vh' :
+		props.helpOpen && !props.SmallScreen ? '100vh' : '0px'};
     overflow: hidden;
     position:fixed;
     z-index:2;

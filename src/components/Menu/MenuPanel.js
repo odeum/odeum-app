@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+
 import MenuItem from './MenuComponents/MenuItem'
 import BlueMenuPanel from "./MenuComponents/BlueMenuPanel"
 import NotFound from '../AppContainer/NotFound'
@@ -7,7 +9,6 @@ import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { ScreenSizes } from '../../theme/media'
 import Tab from '../Tabs/Tab'
-import { Redirect } from 'react-router-dom'
 import Protected from '../Login/Protected'
 import Menu from './Menu'
 import Page from './Page'
@@ -23,6 +24,7 @@ class MenuPanel extends Component {
 			activeMenu: 0
 		}
 	}
+
 	componentWillMount = () => {
 		this.OnSmallScreen()
 		window.addEventListener('resize', this.OnSmallScreen)
@@ -32,8 +34,9 @@ class MenuPanel extends Component {
 		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 
-	//#region Display quickNav or Menu
+	//#region Display SmallScreen or Menu
 
+	//Avoid Rerendering on Window resize
 	OnSmallScreen = () => {
 		if (window.innerWidth < ScreenSizes.tablet) {
 			this.setState({ SmallScreen: true })
@@ -42,8 +45,9 @@ class MenuPanel extends Component {
 			if (window.innerWidth >= ScreenSizes.tablet && this.state.SmallScreen === true)
 				this.setState({ SmallScreen: false })
 		}
-	}
 
+
+	}
 	//#endregion
 
 	//#region Routing + Get First Child Route
@@ -77,7 +81,7 @@ class MenuPanel extends Component {
 	//#region State Management
 
 	switch = (bool) => (
-		this.setState({ quicknav: bool })
+		this.setState({ SmallScreen: bool })
 	)
 	setActiveMenu = (label, id) => {
 		this.setState({ activeMenu: label })
@@ -173,12 +177,12 @@ class MenuPanel extends Component {
 						TopItems.push(this.renderMenuItem(child, index))
 			}
 
+
 		})
 		return TopItems
 	}
 
 	renderMenuItems = (children) => {
-		// console.log(children)
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn === false) {
@@ -203,7 +207,7 @@ class MenuPanel extends Component {
 		})
 	}
 
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, SmallScreen: this.state.SmallScreen, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
 
 	renderMenu = (children) => {
 		const { SmallScreen } = this.state
@@ -213,9 +217,8 @@ class MenuPanel extends Component {
 					SmallScreen={this.switch}
 					top={this.renderTopItems(children)}
 					bottom={this.renderBottomItems(children)}>
-					{/* {this.renderTopMenuItems(children)} */}
 					{this.renderMenuItems(children)}
-				</BlueMenuPanel> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} />}
+				</BlueMenuPanel> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} RedirectTo={this.props.redirectTo} />}
 			<Switch>
 				{this.renderRoutes(children)}
 				<Route path={'*'}

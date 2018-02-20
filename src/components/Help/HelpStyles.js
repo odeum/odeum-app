@@ -1,9 +1,7 @@
 import styled from 'styled-components'
+import { Icon } from 'odeum-ui'
+
 import media from '../../theme/media'
-// import theme from 'theme/default'
-import {
-	Icon
-} from 'odeum-ui'
 
 export const transitionStyles = {
 	entering: { visibility: '', opacity: 1 },
@@ -23,7 +21,7 @@ export const HelpOverlay = styled.div`
 `
 
 export const HelpPopUpTitleText = styled.div`
-	background:	#435C72;
+	background:	${p => p.theme.header.background};
 	text-align: center;
 	vertical-align: middle;
 	color: white;
@@ -48,10 +46,13 @@ export const HelpPopUp = styled.div`
 	display: flex;
 	flex-flow: column;
 `
+
 export const Title = styled.div`
-font-weight: 700;
-font-size: 17px;
+	font-weight: 700;
+	font-size: 17px;
+	color: ${p => p.theme.workspace.color};
 `
+
 export const VerticalDivider = styled.div`
 	background: #e3e3e3;
 	width: 1px;
@@ -66,7 +67,6 @@ export const HorizontalDivider = styled.div`
 	height: 1px;
 	margin: 10px;
 `
-
 
 export const Bold = styled.b`
 	font-size: 12px;
@@ -134,4 +134,5 @@ export const HelpComponentItem = styled.div`
 	display: flex;
 	flex-flow: column wrap;
 	${p => p.orientation === "row" ? 'flex:1;' : ''}
+	color: ${p => p.theme.workspace.color};
 `
