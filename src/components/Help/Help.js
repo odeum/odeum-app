@@ -17,8 +17,8 @@ class Help extends Component {
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
-	getHelpItem = async (helpID) => {
-		var data = await GetHelpItem(helpID) // async/await the stuff / or make a Promise
+	getHelpItem = (helpID) => {/* async  */
+		 var data = GetHelpItem(helpID) // async/await the stuff / or make a Promise
 		return data
 	}
 
@@ -30,8 +30,8 @@ class Help extends Component {
 		// 	})
 	}
 
-	componentWillMount = async () => { //Delete when the API is implemented, only used to used a prepared object to test.
-		var data = await this.getHelpItem(GetHelpID())
+	componentWillMount = () => { //Delete when the API is implemented, only used to used a prepared object to test.
+		var data = this.getHelpItem(GetHelpID())
 		this.setState({ helpObj: data })
 	}
 
