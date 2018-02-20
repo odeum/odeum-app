@@ -16,6 +16,7 @@ import SwipeEvents from './SwipeEvents'
 // import QuickHelpPopup from './QuickHelp'
 // import { GetHelpID } from '../utils/HelpReducer'
 import Help from '../Help/Help'
+
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
@@ -33,15 +34,6 @@ export default class QuickNavigation extends Component {
 		}
 	}
 
-	// getHelpItem = async (helpID) => {
-	// 	var data = await GetHelpItem(helpID)
-	// 	return data
-	// }
-
-	componentWillMount = async () => {
-		// var data = await this.getHelpItem(GetHelpID())
-		// this.setState({ helpObj: data })
-	}
 
 	showQuickNavButton = () => {
 		this.setState({ quickButton: true })
