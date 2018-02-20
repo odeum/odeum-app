@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StyledFooter, Link } from './FooterStyles'
 import Help from '../Help/Help'
 import { ScreenSizes } from '../../theme/media'
-import packageJSON from '../../package.json'
+import packageJSON from '../../../package.json'
 
 class Footer extends PureComponent {
 	constructor(props) {
