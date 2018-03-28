@@ -23,7 +23,7 @@ export default class LoginDefaultForm extends Component {
 			<LoginContainer>
 				<Input name={'username'} onChange={this.handleChange} placeholder={'user'} style={{ marginBottom: '5px' }}/>
 				<Input name={'password'} onChange={this.handleChange} placeholder={'password'} type={'password'} style={{ marginBottom: '5px' }}/>
-				<Button hasText={true} color={'blue'} onClick={this.submit}>Log me in</Button>
+				<Button hasText={true} onClick={this.submit}>Log me in</Button>
 			</LoginContainer>
 
 		)
