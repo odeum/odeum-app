@@ -26,12 +26,16 @@ class MenuPanel extends Component {
 	}
 
 	componentWillMount = () => {
-		this.OnSmallScreen()
-		window.addEventListener('resize', this.OnSmallScreen)
+		if (this.props.quickNavigation === true) {
+			this.OnSmallScreen()
+			window.addEventListener('resize', this.OnSmallScreen)
+		}
 	}
 
 	componentWillUnmount = () => {
-		window.removeEventListener('resize', this.OnSmallScreen)
+		if (this.props.quickNavigation === true) {
+			window.removeEventListener('resize', this.OnSmallScreen)
+		}
 	}
 
 	//#region Display SmallScreen or Menu
