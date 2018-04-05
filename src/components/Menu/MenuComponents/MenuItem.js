@@ -28,7 +28,7 @@ class MenuItem extends PureComponent {
 	render() {
 		const { arrow } = this.props
 		return (
-			<Link title={this.props.label} to={this.props.route} achordeon={this.props.achordeon} onClick={this.activate} activemenu={this.props.active.toString()}>
+			<Link title={this.props.label} to={this.props.route} onClick={this.activate} activemenu={this.props.active.toString()}>
 				<IconDiv><Icon color={'white'} iconSize={18} icon={this.props.icon ? this.props.icon : this.defaultProps.icon} style={{ marginRight: '0px' }} /></IconDiv>
 				<MenuText>
 					{this.props.label}
