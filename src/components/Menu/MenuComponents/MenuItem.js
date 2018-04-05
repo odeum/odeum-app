@@ -13,7 +13,7 @@ class MenuItem extends PureComponent {
 	componentWillMount() {
 		this.setHelpID()
 		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route)) {
-			this.activate()
+			this.props.onClick(this.props.MenuID)
 		}
 	}
 	setHelpID = () => {
@@ -23,7 +23,8 @@ class MenuItem extends PureComponent {
 	}
 	activate = () => {
 		this.props.onClick(this.props.MenuID)
-	}
+		if (this.props.switch !== undefined && this.props.achordeon === true)
+			this.props.switch()	}
 	render() {
 		const { arrow } = this.props
 		return (

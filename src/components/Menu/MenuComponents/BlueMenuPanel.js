@@ -17,6 +17,7 @@ class BlueMenuPanel extends PureComponent {
 	render() {
 		const CustomHeaderComponents = this.props.top
 		const CustomFooterComponents = this.props.bottom
+		const { onMenuClickClose } = this.props
 		return (
 			<BlueMenuContainer achordeon={this.state.achordeon}>
 				{CustomHeaderComponents.length === 0 ? <DefaultHeader>
@@ -26,7 +27,7 @@ class BlueMenuPanel extends PureComponent {
 					</IconDiv>
 				</DefaultHeader>
 					: <MenuHeader>{this.props.top}</MenuHeader>}
-				{this.props.children}
+				{onMenuClickClose ? this.props.children.map(c => c !== null ? React.cloneElement(c, { ...c.props, switch: this.switch, achordeon: this.state.achordeon }) : null) : this.props.children}
 				<MenuFooter>
 					{CustomFooterComponents ? CustomFooterComponents : null}
 				</MenuFooter>

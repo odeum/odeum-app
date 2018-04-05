@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import BlueMenuPanel from "./MenuComponents/BlueMenuPanel"
 import NotFound from '../AppContainer/NotFound'
-import QuickNavigation from '../QuickNavigation/QuickNavigation'
+// import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { ScreenSizes } from '../../theme/media'
 import Tab from '../Tabs/Tab'
@@ -13,6 +13,7 @@ import Protected from '../Login/Protected'
 import Menu from './Menu'
 import Page from './Page'
 
+var QuickNavigation = null
 class MenuPanel extends Component {
 
 	constructor(props) {
@@ -27,6 +28,7 @@ class MenuPanel extends Component {
 
 	componentWillMount = () => {
 		if (this.props.quickNavigation === true) {
+			import('../QuickNavigation/QuickNavigation').then(module => QuickNavigation = module.default)
 			this.OnSmallScreen()
 			window.addEventListener('resize', this.OnSmallScreen)
 		}
@@ -186,29 +188,61 @@ class MenuPanel extends Component {
 		return TopItems
 	}
 
+	// renderMenuItems = (children) => {
+	// 	return children.map((child, index) => {
+	// 		if (child.type === Protected && !child.props.bottom && !child.props.top) {
+	// 			if (this.props.isLoggedIn === false) {
+	// 				return null
+	// 			}
+	// 			else {
+	// 				const childs = React.Children.toArray(child.props.children)
+	// 				return childs.map((protchild, protindex) => {
+	// 					if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
+	// 						return this.renderMenuItem(protchild, protindex + index)
+	// 					else return null
+	// 				}
+	// 				)
+	// 			}
+	// 		}
+	// 		else {
+	// 			if (!child.props.bottom && !child.props.top && child.props.label)
+	// 				return this.renderMenuItem(child, index)
+	// 			else return null
+	// 		}
+
+	// 	})
+	// }
+
 	renderMenuItems = (children) => {
-		return children.map((child, index) => {
+		var MenuItems = []
+		children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn === false) {
 					return null
 				}
 				else {
 					const childs = React.Children.toArray(child.props.children)
-					return childs.map((protchild, protindex) => {
+					const protMenuItems = childs.map((protchild, protindex) => {
 						if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
-							return this.renderMenuItem(protchild, protindex + index)
-						else return null
+							return MenuItems.push(this.renderMenuItem(protchild, protindex + index))
+						else {
+							return null
+						}
 					}
 					)
+					return [...protMenuItems]
 				}
 			}
 			else {
 				if (!child.props.bottom && !child.props.top && child.props.label)
-					return this.renderMenuItem(child, index)
-				else return null
+					return MenuItems.push(this.renderMenuItem(child, index))
+				else {
+					return null
+				}
 			}
 
 		})
+		return MenuItems
 	}
 
 	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, SmallScreen: this.state.SmallScreen, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
@@ -220,7 +254,8 @@ class MenuPanel extends Component {
 				<BlueMenuPanel
 					SmallScreen={this.switch}
 					top={this.renderTopItems(children)}
-					bottom={this.renderBottomItems(children)}>
+					bottom={this.renderBottomItems(children)}
+					onMenuClickClose={this.props.onMenuClickClose}>
 					{this.renderMenuItems(children)}
 				</BlueMenuPanel> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} RedirectTo={this.props.redirectTo} />}
 			<Switch>
