@@ -26,7 +26,7 @@ class MenuPanel extends Component {
 		}
 	}
 
-	componentWillMount = () => {
+	componentDidMount = () => {
 		if (this.props.quickNavigation === true) {
 			import('../QuickNavigation/QuickNavigation').then(module => QuickNavigation = module.default)
 			this.OnSmallScreen()
@@ -36,6 +36,7 @@ class MenuPanel extends Component {
 
 	componentWillUnmount = () => {
 		if (this.props.quickNavigation === true) {
+			QuickNavigation = null
 			window.removeEventListener('resize', this.OnSmallScreen)
 		}
 	}
@@ -89,9 +90,9 @@ class MenuPanel extends Component {
 	switch = (bool) => (
 		this.setState({ SmallScreen: bool })
 	)
-	setActiveMenu = (label, id) => {
-		this.setState({ activeMenu: label })
-	}
+	// setActiveMenu = (label, id) => {
+	// 	this.setState({ activeMenu: label })
+	// }
 
 	//#endregion
 
@@ -99,7 +100,7 @@ class MenuPanel extends Component {
 
 	renderMenuItem = (child, index) => {
 		return <MenuItem key={index}
-			MenuID={index}
+			// MenuID={index}
 			helpID={child.props.helpID}
 			active={this.state.activeMenu === (index) ? true : false}
 			icon={child.props.icon}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 
@@ -8,12 +8,12 @@ import Workspace from '../Workspace/Workspace'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { SetHelpID } from '../utils/HelpReducer'
 
-class Menu extends Component {
-
-	componentWillMount = () => {
-		if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
-			this.props.setActiveMenu(this.props.MenuID)
-		}
+class Menu extends PureComponent {
+	
+	componentDidMount = () => {
+		// if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
+		// 	this.props.setActiveMenu(this.props.MenuID)
+		// }
 		this.setHelpID()
 	}
 

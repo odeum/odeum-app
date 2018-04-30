@@ -34,7 +34,7 @@ class Header extends Component {
 		}
 	}
 
-	componentWillMount = () => {
+	componentDidMount = () => {
 		this.OnSmallScreen()
 		window.addEventListener('resize', this.OnSmallScreen)
 	}

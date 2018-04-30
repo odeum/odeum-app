@@ -30,7 +30,7 @@ class Help extends Component {
 		// 	})
 	}
 
-	componentWillMount = () => { //Delete when the API is implemented, only used to used a prepared object to test.
+	componentDidMount = () => { //Delete when the API is implemented, only used to used a prepared object to test.
 		var data = this.getHelpItem(GetHelpID())
 		this.setState({ helpObj: data })
 	}

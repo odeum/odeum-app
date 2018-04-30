@@ -14,7 +14,7 @@ class Footer extends PureComponent {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.OnSmallScreen()
 		window.addEventListener('resize', this.OnSmallScreen)
 	}

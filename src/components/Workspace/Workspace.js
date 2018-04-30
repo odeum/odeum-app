@@ -4,7 +4,7 @@ import { SetHelpID } from '../utils/HelpReducer'
 
 class Workspace extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		if (this.props.helpID)
 			SetHelpID(this.props.helpID)
 	}
