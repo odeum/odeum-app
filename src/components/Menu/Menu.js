@@ -1,30 +1,57 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from '../Workspace/Workspace'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { SetHelpID } from '../utils/HelpReducer'
+import { withRouter } from 'react-router-dom'
 
-class Menu extends PureComponent {
-	
-	componentDidMount = () => {
-		// if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
-		// 	this.props.setActiveMenu(this.props.MenuID)
-		// }
-		this.setHelpID()
+export const TabContext = React.createContext()
+
+class Menu extends Component {
+
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			extrChildren: []
+		}
 	}
 
+	componentDidMount = () => {
+		this.setHelpID()
+	}
+	addTab = (label, route, icon, child) => {
+		var newTab = <Tab
+			key={9}
+			tabID={9}
+			exact={false}
+			label={label}
+			icon={icon}
+			route={route}
+			children={child}
+		/>
+		var newExtraChildren = this.state.extrChildren
+		newExtraChildren.push(newTab)
+		this.setState({
+			extrChildren: newExtraChildren
+		})
+	}
 	setHelpID = () => {
 		if (this.props.helpID) {
 			SetHelpID(this.props.helpID)
 		}
 	}
+	componentWillUnmount = () => {
+		console.log('unmount', 'Menu')
+
+	}
 
 	//#region Label Converting for Menu
-	route = (child) => this.props.route !== undefined ? this.props.route : convertLabelToRoute(this.props.label)
+	route = () => this.props.route !== undefined ? this.props.route : convertLabelToRoute(this.props.label)
 
 	childRoute = (child) => {
 		return child.props.route !== undefined ? child.props.route : convertLabelToRoute(child.props.label)
@@ -40,7 +67,7 @@ class Menu extends PureComponent {
 			component={this.renderChild(child)} />
 	})
 
-	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
+	renderChild = (child) => () => <Workspace>{React.cloneElement(child.props.children, { addTab: this.addTab })}</Workspace>
 
 	//#endregion
 
@@ -48,23 +75,32 @@ class Menu extends PureComponent {
 		if (children[0].type === Tab)
 			return (
 				<SceneDiv>
-					{!this.props.SmallScreen ?
-						<TabList>
-							{children.map((child, index) => (
-								<Tab key={index}
-									helpID={child.props.helpID ? child.props.helpID : undefined}
-									tabID={index}
-									exact={isExact(this.childRoute(child))}
-									label={child.props.label}
-									icon={child.props.icon}
-									route={this.route() + this.childRoute(child)}
-								/>
-							))}
-						</TabList> : null}
-					<Switch>
-						{this.renderChildren(children)}
-					</Switch>
-				</SceneDiv>
+					<TabContext.Consumer>
+						{(value) => {
+							console.log(value)
+							return <React.Fragment>
+								{!this.props.SmallScreen ?
+									<TabList>
+										{value.children.map((child, index) => {
+											console.log(child)
+											return <Tab key={index}
+												helpID={child.props.helpID ? child.props.helpID : undefined}
+												tabID={index}
+												exact={isExact(this.childRoute(child))}
+												label={child.props.label}
+												icon={child.props.icon}
+												route={this.route() + this.childRoute(child)}
+											/>
+										})
+										}
+
+									</TabList> : null}
+								{this.renderChildren(value.children)}
+							</React.Fragment>
+						}}
+
+					</TabContext.Consumer>
+				</SceneDiv >
 			)
 		else {
 			return (
@@ -84,7 +120,12 @@ class Menu extends PureComponent {
 	}
 
 	render() {
-		return this.renderTabs(React.Children.toArray(this.props.children))
+		var children = React.Children.toArray(this.props.children)
+		// this.addTab('Test', '/test', 'info', <div>Child</div>)
+		children.push(...this.state.extrChildren)
+		return <TabContext.Provider value={{ children: [...this.state.extrChildren, ...React.Children.toArray(this.props.children)] }}>
+			{this.renderTabs(React.Children.toArray(this.props.children))}
+		</TabContext.Provider>
 	}
 }
 
@@ -94,4 +135,4 @@ Menu.propTypes = {
 	icon: PropTypes.string,
 }
 
-export default Menu
+export default withRouter(Menu)

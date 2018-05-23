@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
@@ -12,9 +12,9 @@ import Tab from '../Tabs/Tab'
 import Protected from '../Login/Protected'
 import Menu from './Menu'
 import Page from './Page'
-
+import { withRouter } from 'react-router-dom'
 var QuickNavigation = null
-class MenuPanel extends Component {
+class MenuPanel extends PureComponent {
 
 	constructor(props) {
 		super(props)
@@ -22,7 +22,7 @@ class MenuPanel extends Component {
 		this.state = {
 			SmallScreen: false,
 			disableMenuAchordeon: false,
-			activeMenu: 0
+			// activeMenu: 0
 		}
 	}
 
@@ -90,9 +90,6 @@ class MenuPanel extends Component {
 	switch = (bool) => (
 		this.setState({ SmallScreen: bool })
 	)
-	// setActiveMenu = (label, id) => {
-	// 	this.setState({ activeMenu: label })
-	// }
 
 	//#endregion
 
@@ -189,34 +186,8 @@ class MenuPanel extends Component {
 		return TopItems
 	}
 
-	// renderMenuItems = (children) => {
-	// 	return children.map((child, index) => {
-	// 		if (child.type === Protected && !child.props.bottom && !child.props.top) {
-	// 			if (this.props.isLoggedIn === false) {
-	// 				return null
-	// 			}
-	// 			else {
-	// 				const childs = React.Children.toArray(child.props.children)
-	// 				return childs.map((protchild, protindex) => {
-	// 					if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
-	// 						return this.renderMenuItem(protchild, protindex + index)
-	// 					else return null
-	// 				}
-	// 				)
-	// 			}
-	// 		}
-	// 		else {
-	// 			if (!child.props.bottom && !child.props.top && child.props.label)
-	// 				return this.renderMenuItem(child, index)
-	// 			else return null
-	// 		}
-
-	// 	})
-	// }
-
 	renderMenuItems = (children) => {
-		var MenuItems = []
-		children.map((child, index) => {
+		var test = children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn === false) {
 					return null
@@ -225,7 +196,7 @@ class MenuPanel extends Component {
 					const childs = React.Children.toArray(child.props.children)
 					const protMenuItems = childs.map((protchild, protindex) => {
 						if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
-							return MenuItems.push(this.renderMenuItem(protchild, protindex + index))
+							return this.renderMenuItem(protchild, protindex + index)
 						else {
 							return null
 						}
@@ -236,17 +207,19 @@ class MenuPanel extends Component {
 			}
 			else {
 				if (!child.props.bottom && !child.props.top && child.props.label)
-					return MenuItems.push(this.renderMenuItem(child, index))
+					return this.renderMenuItem(child, index)
 				else {
 					return null
 				}
 			}
 
 		})
-		return MenuItems
+		return test
 	}
 
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, SmallScreen: this.state.SmallScreen, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, SmallScreen: this.state.SmallScreen, route: this.route(child), MenuID: index }) }
+	renderNotFound = () => <NotFound />
+	renderRedirectToLogin = () => <Redirect to={this.props.redirectTo} />
 
 	renderMenu = (children) => {
 		const { SmallScreen } = this.state
@@ -261,10 +234,10 @@ class MenuPanel extends Component {
 				</BlueMenuPanel> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} RedirectTo={this.props.redirectTo} />}
 			<Switch>
 				{this.renderRoutes(children)}
-				<Route path={'*'}
-					render={this.props.login === true ?
-						(this.props.isLoggedIn === true ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />)
-						: () => <NotFound />} />
+				<Route
+					component={this.props.login === true ?
+						(this.props.isLoggedIn === true ? this.renderNotFound : this.renderRedirectToLogin)
+						: this.renderNotFound} />
 			</Switch>
 		</React.Fragment>
 	}
@@ -278,4 +251,4 @@ class MenuPanel extends Component {
 MenuPanel.defaultProps = {
 	login: false
 }
-export default MenuPanel
+export default withRouter(MenuPanel)

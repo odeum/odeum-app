@@ -5,8 +5,12 @@ import { SetHelpID } from '../utils/HelpReducer'
 class Workspace extends Component {
 
 	componentDidMount() {
+		console.log('cdm', 'Workspace')
 		if (this.props.helpID)
 			SetHelpID(this.props.helpID)
+	}
+	componentWillUnmount = () => {
+		console.log('unmount', 'Workspace')
 	}
 
 	render() {
