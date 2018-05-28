@@ -247,7 +247,8 @@ class MenuPanel extends Component {
 	}
 
 	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, SmallScreen: this.state.SmallScreen, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
-
+	render404 = () => <NotFound />
+	renderRedirect = () => <Redirect to={this.props.redirectTo} />
 	renderMenu = (children) => {
 		const { SmallScreen } = this.state
 		return <React.Fragment>
@@ -263,8 +264,8 @@ class MenuPanel extends Component {
 				{this.renderRoutes(children)}
 				<Route path={'*'}
 					render={this.props.login === true ?
-						(this.props.isLoggedIn === true ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />)
-						: () => <NotFound />} />
+						(this.props.isLoggedIn === true ? this.render404 : this.renderRedirect)
+						: this.render404} />
 			</Switch>
 		</React.Fragment>
 	}
